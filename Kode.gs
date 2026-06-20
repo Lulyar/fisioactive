@@ -136,7 +136,7 @@ function initSheets() {
   var usersSheet = ss.getSheetByName('Users');
   var usersData = [
     ['admin', 'admin123', 'Administrator', 'admin'],
-    ['terapis', 'terapis123', 'Kartika Senja Wulandari, S.Ft', 'terapis']
+    ['terapis', 'terapis123', "M. Belva I'zaz Sahitya, S. Ft", 'terapis']
   ];
   usersData.forEach(function(row) { usersSheet.appendRow(row); });
   report.push('Users: 2 users added');
@@ -156,7 +156,7 @@ function initSheets() {
   // --- TERAPIS (4 terapis) ---
   var tSheet = ss.getSheetByName('Terapis');
   var tData = [
-    ['FT01', 'Kartika Senja Wulandari, S.Ft', 'Gangguan Gerak & Postur', 'Fokus pada koreksi postur dan pemulihan gerak fungsional selama 6 tahun praktik', '07:30', '14:30', '167', '4'],
+    ['FT01', "M. Belva I'zaz Sahitya, S. Ft", 'Gangguan Gerak & Postur', 'Fokus pada koreksi postur dan pemulihan gerak fungsional selama 6 tahun praktik', '07:30', '14:30', '167', '4'],
     ['FT02', 'Galang Mahardika Putra, S.Ft', 'Rehabilitasi Cedera Olahraga', 'Menangani atlet dan individu aktif dengan cedera muskuloskeletal kompleks', '08:00', '15:00', '124', '3'],
     ['FT03', 'Melati Ayu Purnama, S.Ft', 'Tumbuh Kembang Anak', 'Terapis khusus anak dengan sertifikasi Bobath dan Sensory Integration', '09:00', '16:00', '93', '5'],
     ['FT04', 'Rangga Dwi Satriya, S.Ft', 'Pemulihan Pasca Bedah', 'Ahli dalam program rehabilitasi sistematis setelah prosedur bedah ortopedi', '08:30', '15:30', '108', '2']
@@ -189,19 +189,19 @@ function initSheets() {
   // --- JADWAL HARI INI (15 jadwal) ---
   var jSheet = ss.getSheetByName('Jadwal');
   var jadwalData = [
-    ['SJ001', 'FA001', 'Bagus Tirta Wijaya', 'Mobilisasi Sendi & Jaringan', 'Kartika Senja Wulandari, S.Ft', today, '07:30', 'Studio A', 'Selesai'],
-    ['SJ002', 'FA005', 'Farhan Maulana Akbar', 'Terapi Ultrasound Terapeutik', 'Kartika Senja Wulandari, S.Ft', today, '08:15', 'Studio A', 'Selesai'],
+    ['SJ001', 'FA001', 'Bagus Tirta Wijaya', 'Mobilisasi Sendi & Jaringan', "M. Belva I'zaz Sahitya, S. Ft", today, '07:30', 'Studio A', 'Selesai'],
+    ['SJ002', 'FA005', 'Farhan Maulana Akbar', 'Terapi Ultrasound Terapeutik', "M. Belva I'zaz Sahitya, S. Ft", today, '08:15', 'Studio A', 'Selesai'],
     ['SJ003', 'FA003', 'Dimas Arya Nugraha', 'Mobilisasi Sendi & Jaringan', 'Galang Mahardika Putra, S.Ft', today, '08:00', 'Studio B', 'Selesai'],
     ['SJ004', 'FA007', 'Haikal Baskara Pratama', 'Stimulasi Elektrik Fungsional', 'Rangga Dwi Satriya, S.Ft', today, '08:30', 'Studio C', 'Dalam Proses'],
     ['SJ005', 'FA002', 'Citra Pramesti Hapsari', 'Program Penguatan Progresif', 'Galang Mahardika Putra, S.Ft', today, '09:00', 'Studio B', 'Dalam Proses'],
     ['SJ006', 'FA014', 'Olivia Zahra Azzahra', 'Latihan Keseimbangan Dinamis', 'Melati Ayu Purnama, S.Ft', today, '09:00', 'Studio D', 'Dalam Proses'],
-    ['SJ007', 'FA004', 'Elvira Putri Ramadhani', 'Mobilisasi Sendi & Jaringan', 'Kartika Senja Wulandari, S.Ft', today, '09:30', 'Studio A', 'Menunggu'],
+    ['SJ007', 'FA004', 'Elvira Putri Ramadhani', 'Mobilisasi Sendi & Jaringan', "M. Belva I'zaz Sahitya, S. Ft", today, '09:30', 'Studio A', 'Menunggu'],
     ['SJ008', 'FA009', 'Joko Susanto Prawiranegara', 'Terapi Ultrasound Terapeutik', 'Rangga Dwi Satriya, S.Ft', today, '10:00', 'Studio C', 'Menunggu'],
     ['SJ009', 'FA012', 'Mayang Sari Utami', 'Stimulasi Elektrik Fungsional', 'Galang Mahardika Putra, S.Ft', today, '10:30', 'Studio B', 'Menunggu'],
-    ['SJ010', 'FA006', 'Gita Nandya Paramitha', 'Terapi Ultrasound Terapeutik', 'Kartika Senja Wulandari, S.Ft', today, '10:45', 'Studio A', 'Menunggu'],
+    ['SJ010', 'FA006', 'Gita Nandya Paramitha', 'Terapi Ultrasound Terapeutik', "M. Belva I'zaz Sahitya, S. Ft", today, '10:45', 'Studio A', 'Menunggu'],
     ['SJ011', 'FA010', 'Kartini Dwi Lestari', 'Mobilisasi Sendi & Jaringan', 'Rangga Dwi Satriya, S.Ft', today, '11:00', 'Studio C', 'Menunggu'],
     ['SJ012', 'FA008', 'Intan Maharani Putri', 'Program Penguatan Progresif', 'Galang Mahardika Putra, S.Ft', today, '13:00', 'Studio B', 'Menunggu'],
-    ['SJ013', 'FA011', 'Lutfi Hakim Pradipta', 'Terapi Ultrasound Terapeutik', 'Kartika Senja Wulandari, S.Ft', today, '13:30', 'Studio A', 'Menunggu'],
+    ['SJ013', 'FA011', 'Lutfi Hakim Pradipta', 'Terapi Ultrasound Terapeutik', "M. Belva I'zaz Sahitya, S. Ft", today, '13:30', 'Studio A', 'Menunggu'],
     ['SJ014', 'FA013', 'Naufal Rizky Maulana', 'Latihan Keseimbangan Dinamis', 'Rangga Dwi Satriya, S.Ft', today, '14:00', 'Studio C', 'Menunggu'],
     ['SJ015', 'FA015', 'Putra Aditya Wicaksono', 'Program Penguatan Progresif', 'Galang Mahardika Putra, S.Ft', today, '14:30', 'Studio B', 'Menunggu']
   ];
@@ -211,15 +211,15 @@ function initSheets() {
   // --- REKAM MEDIS (10 rekam) ---
   var rmSheet = ss.getSheetByName('RekamMedis');
   var rmData = [
-    ['MR001', 'FA001', 'Kekakuan Pasca Fraktur Radius Distal', 'Mobilisasi sendi 3x/minggu selama 4 minggu', 'Grip strength meningkat 40% dari baseline', 'Kartika Senja Wulandari, S.Ft', '2025-03-08', 'Aktif'],
-    ['MR002', 'FA005', 'Lumbar Disc Bulging L5-S1', 'Kombinasi ultrasound dan latihan stabilisasi core', 'VAS nyeri turun dari 8 ke 3 setelah 6 sesi', 'Kartika Senja Wulandari, S.Ft', '2025-03-14', 'Aktif'],
+    ['MR001', 'FA001', 'Kekakuan Pasca Fraktur Radius Distal', 'Mobilisasi sendi 3x/minggu selama 4 minggu', 'Grip strength meningkat 40% dari baseline', "M. Belva I'zaz Sahitya, S. Ft", '2025-03-08', 'Aktif'],
+    ['MR002', 'FA005', 'Lumbar Disc Bulging L5-S1', 'Kombinasi ultrasound dan latihan stabilisasi core', 'VAS nyeri turun dari 8 ke 3 setelah 6 sesi', "M. Belva I'zaz Sahitya, S. Ft", '2025-03-14', 'Aktif'],
     ['MR003', 'FA003', 'Cervical Myofascial Pain Syndrome', 'Mobilisasi cervical dan stretching rutin di rumah', 'Trigger point berkurang signifikan', 'Galang Mahardika Putra, S.Ft', '2025-03-20', 'Aktif'],
     ['MR004', 'FA007', 'Hemiparesis Kanan ec CVA Infark', 'Stimulasi elektrik dan latihan fungsional harian', 'Kekuatan otot naik dari grade 2 ke 3+', 'Rangga Dwi Satriya, S.Ft', '2025-03-25', 'Aktif'],
     ['MR005', 'FA002', 'Plantar Fasciitis Bilateral', 'Penguatan intrinsik kaki dan modifikasi alas kaki', 'Morning pain berkurang 60% setelah 8 sesi', 'Galang Mahardika Putra, S.Ft', '2025-04-02', 'Aktif'],
     ['MR006', 'FA009', 'Gonarthrosis Bilateral Grade III', 'Ultrasound dan latihan penguatan quadriceps', 'Jarak jalan meningkat dari 100m ke 350m', 'Rangga Dwi Satriya, S.Ft', '2025-04-10', 'Aktif'],
     ['MR007', 'FA012', 'Paresis Nervus Fasialis Perifer Dextra', 'Elektrostimulasi wajah dan mirror therapy', 'Asimetri berkurang dari grade 5 ke grade 3', 'Galang Mahardika Putra, S.Ft', '2025-04-22', 'Aktif'],
     ['MR008', 'FA014', 'Keterlambatan Motorik Kasar', 'Latihan keseimbangan dan koordinasi berbasis bermain', 'Sudah mampu berdiri 5 detik tanpa pegangan', 'Melati Ayu Purnama, S.Ft', '2025-05-08', 'Aktif'],
-    ['MR009', 'FA011', 'Herniasi Diskus Lumbal dengan Sciatica', 'Traksi manual dan McKenzie exercise', 'Straight leg raise meningkat dari 30 ke 65 derajat', 'Kartika Senja Wulandari, S.Ft', '2025-05-12', 'Aktif'],
+    ['MR009', 'FA011', 'Herniasi Diskus Lumbal dengan Sciatica', 'Traksi manual dan McKenzie exercise', 'Straight leg raise meningkat dari 30 ke 65 derajat', "M. Belva I'zaz Sahitya, S. Ft", '2025-05-12', 'Aktif'],
     ['MR010', 'FA015', 'Post ORIF Fraktur Shaft Femur Dextra', 'Penguatan progresif dan gait training', 'Sudah bisa partial weight bearing dengan kruk', 'Rangga Dwi Satriya, S.Ft', '2025-05-18', 'Aktif']
   ];
   rmData.forEach(function(row) { rmSheet.appendRow(row); });
