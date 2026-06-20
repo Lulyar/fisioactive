@@ -1,0 +1,3146 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="FisioActive — Sistem Manajemen Klinik Fisioterapi Modern">
+<title>FisioActive</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+<style>
+/* ============================================
+   CSS DESIGN SYSTEM — INDIGO FLAT THEME
+   ============================================ */
+:root {
+  --primary: #6366f1;
+  --primary-dark: #4f46e5;
+  --primary-deeper: #4338ca;
+  --primary-light: #eef2ff;
+  --primary-100: #e0e7ff;
+  --primary-200: #c7d2fe;
+  --accent: #f97316;
+  --accent-dark: #ea580c;
+  --accent-light: #fff7ed;
+  --danger: #ef4444;
+  --danger-dark: #dc2626;
+  --danger-light: #fef2f2;
+  --success: #22c55e;
+  --success-dark: #16a34a;
+  --success-light: #f0fdf4;
+  --warning: #f59e0b;
+  --warning-dark: #d97706;
+  --warning-light: #fffbeb;
+  --info: #3b82f6;
+  --info-light: #eff6ff;
+  --sidebar-bg: #1e1b4b;
+  --sidebar-hover: #312e81;
+  --sidebar-active: #4338ca;
+  --sidebar-text: #a5b4fc;
+  --sidebar-text-active: #ffffff;
+  --bg: #f8fafc;
+  --bg-card: #ffffff;
+  --bg-dark: #0f172a;
+  --text: #1e293b;
+  --text-secondary: #64748b;
+  --text-muted: #94a3b8;
+  --border: #e2e8f0;
+  --border-light: #f1f5f9;
+  --shadow-xs: 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+  --shadow: 0 2px 8px rgba(0,0,0,0.06);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+  --shadow-lg: 0 8px 24px rgba(0,0,0,0.1);
+  --radius: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-2xl: 20px;
+  --font: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  --transition: 0.2s ease;
+  --sidebar-width: 260px;
+  --sidebar-collapsed: 72px;
+  --header-height: 64px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--text-muted); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-secondary); }
+
+/* ============================================
+   LOGIN PAGE — SPLIT SCREEN
+   ============================================ */
+#loginPage {
+  display: flex;
+  min-height: 100vh;
+}
+
+.login-branding {
+  flex: 1;
+  background: var(--sidebar-bg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px;
+  position: relative;
+  overflow: hidden;
+}
+
+.login-branding::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 30% 50%, rgba(99,102,241,0.15) 0%, transparent 50%);
+  animation: floatBg 20s ease-in-out infinite;
+}
+
+@keyframes floatBg {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(30px, -20px); }
+}
+
+.login-branding .brand-logo {
+  position: relative;
+  z-index: 1;
+  width: 80px;
+  height: 80px;
+  background: var(--primary);
+  border-radius: var(--radius-xl);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  color: #fff;
+  margin-bottom: 24px;
+}
+
+.login-branding h1 {
+  position: relative;
+  z-index: 1;
+  color: #fff;
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.login-branding p {
+  position: relative;
+  z-index: 1;
+  color: var(--sidebar-text);
+  font-size: 16px;
+  margin-top: 8px;
+  text-align: center;
+  max-width: 320px;
+}
+
+.login-features {
+  position: relative;
+  z-index: 1;
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.login-features .feat-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--primary-200);
+  font-size: 14px;
+}
+
+.login-features .feat-item .material-icons-round {
+  font-size: 20px;
+  color: var(--primary);
+}
+
+.login-form-side {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px;
+  background: var(--bg);
+}
+
+.login-form-box {
+  width: 100%;
+  max-width: 400px;
+}
+
+.login-form-box .mobile-brand {
+  display: none;
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.login-form-box .mobile-brand .brand-icon {
+  width: 56px;
+  height: 56px;
+  background: var(--primary);
+  border-radius: var(--radius-lg);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: #fff;
+  margin-bottom: 12px;
+}
+
+.login-form-box .mobile-brand h2 {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--text);
+}
+
+.login-form-box h2 {
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+.login-form-box .login-subtitle {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-bottom: 32px;
+}
+
+.login-form-box .form-group {
+  margin-bottom: 20px;
+}
+
+.login-form-box .form-group label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+
+.login-form-box .form-group .input-wrapper {
+  position: relative;
+}
+
+.login-form-box .form-group .input-wrapper .material-icons-round {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px;
+  color: var(--text-muted);
+}
+
+.login-form-box .form-group input {
+  width: 100%;
+  padding: 12px 14px 12px 44px;
+  border: 2px solid var(--border);
+  border-radius: var(--radius-lg);
+  font-size: 14px;
+  font-family: var(--font);
+  color: var(--text);
+  background: var(--bg-card);
+  transition: var(--transition);
+}
+
+.login-form-box .form-group input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(99,102,241,0.1);
+}
+
+.login-form-box .btn-login {
+  width: 100%;
+  padding: 14px;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-lg);
+  font-size: 15px;
+  font-weight: 700;
+  font-family: var(--font);
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.login-form-box .btn-login:hover {
+  background: var(--primary-dark);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.login-form-box .btn-login:active { transform: translateY(0); }
+
+.login-form-box .btn-login.loading {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.login-error {
+  background: var(--danger-light);
+  color: var(--danger);
+  padding: 10px 14px;
+  border-radius: var(--radius);
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 16px;
+  display: none;
+  align-items: center;
+  gap: 8px;
+}
+
+.login-error.show { display: flex; }
+
+/* ============================================
+   APP LAYOUT — SIDEBAR + MAIN
+   ============================================ */
+#appLayout {
+  display: none;
+  min-height: 100vh;
+}
+
+#appLayout.active { display: flex; }
+
+/* ============================================
+   SIDEBAR
+   ============================================ */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: var(--sidebar-width);
+  height: 100vh;
+  background: var(--sidebar-bg);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  transition: width 0.3s ease, transform 0.3s ease;
+  overflow: hidden;
+}
+
+.sidebar-header {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  min-height: 72px;
+  flex-shrink: 0;
+}
+
+.sidebar-header .s-logo {
+  width: 40px;
+  height: 40px;
+  background: var(--primary);
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.sidebar-header .s-brand {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.sidebar-header .s-brand h1 {
+  font-size: 18px;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.3px;
+}
+
+.sidebar-header .s-brand span {
+  font-size: 11px;
+  color: var(--sidebar-text);
+  font-weight: 400;
+}
+
+.sidebar-nav {
+  flex: 1;
+  padding: 12px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.sidebar-nav::-webkit-scrollbar { width: 0; }
+
+.nav-label {
+  font-size: 10px;
+  font-weight: 700;
+  color: rgba(165,180,252,0.4);
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  padding: 16px 12px 8px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  color: var(--sidebar-text);
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: var(--transition);
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+  font-family: var(--font);
+  white-space: nowrap;
+  overflow: hidden;
+  position: relative;
+}
+
+.nav-link:hover {
+  background: var(--sidebar-hover);
+  color: var(--sidebar-text-active);
+}
+
+.nav-link.active {
+  background: var(--sidebar-active);
+  color: var(--sidebar-text-active);
+  font-weight: 600;
+}
+
+.nav-link .material-icons-round {
+  font-size: 20px;
+  flex-shrink: 0;
+  width: 20px;
+}
+
+.nav-link span { overflow: hidden; text-overflow: ellipsis; }
+
+.sidebar-footer {
+  padding: 16px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  flex-shrink: 0;
+}
+
+.sidebar-user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px;
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.sidebar-user .user-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.sidebar-user .user-info {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.sidebar-user .user-info .user-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.sidebar-user .user-info .user-role {
+  font-size: 11px;
+  color: var(--sidebar-text);
+}
+
+/* ============================================
+   HEADER BAR
+   ============================================ */
+.header-bar {
+  position: fixed;
+  top: 0;
+  left: var(--sidebar-width);
+  right: 0;
+  height: var(--header-height);
+  background: var(--bg-card);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  z-index: 999;
+  transition: left 0.3s ease;
+  gap: 16px;
+}
+
+.hamburger-btn {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--text);
+  font-size: 24px;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: var(--radius);
+  transition: var(--transition);
+}
+
+.hamburger-btn:hover { background: var(--border-light); }
+
+.header-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.header-right {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header-date {
+  font-size: 13px;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.header-date .material-icons-round { font-size: 16px; }
+
+/* ============================================
+   MAIN CONTENT AREA
+   ============================================ */
+.main-area {
+  margin-left: var(--sidebar-width);
+  padding-top: var(--header-height);
+  min-height: 100vh;
+  transition: margin-left 0.3s ease;
+}
+
+.page-content {
+  padding: 24px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.page-section {
+  display: none;
+}
+
+.page-section.active { display: block; }
+
+/* ============================================
+   PAGE HEADER
+   ============================================ */
+.page-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.page-head .ph-text h1 {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--text);
+  letter-spacing: -0.3px;
+}
+
+.page-head .ph-text p {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-top: 2px;
+}
+
+.page-head .ph-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 18px;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: var(--font);
+  border: none;
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: var(--transition);
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.btn:active { transform: scale(0.97); }
+
+.btn-primary { background: var(--primary); color: #fff; }
+.btn-primary:hover { background: var(--primary-dark); box-shadow: var(--shadow-md); }
+
+.btn-accent { background: var(--accent); color: #fff; }
+.btn-accent:hover { background: var(--accent-dark); }
+
+.btn-outline { background: transparent; color: var(--text); border: 2px solid var(--border); }
+.btn-outline:hover { border-color: var(--primary); color: var(--primary); }
+
+.btn-danger { background: var(--danger); color: #fff; }
+.btn-danger:hover { background: var(--danger-dark); }
+
+.btn-ghost { background: transparent; color: var(--text-secondary); }
+.btn-ghost:hover { background: var(--border-light); color: var(--text); }
+
+.btn-sm { padding: 7px 14px; font-size: 12px; border-radius: var(--radius); }
+.btn-icon { padding: 8px; border-radius: var(--radius); }
+
+/* ============================================
+   STAT CARDS
+   ============================================ */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.stat-card {
+  background: var(--bg-card);
+  border-radius: var(--radius-xl);
+  padding: 20px 24px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  transition: var(--transition);
+  border: 1px solid var(--border-light);
+}
+
+.stat-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+
+.stat-card .sc-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+.sc-icon.indigo { background: var(--primary-light); color: var(--primary); }
+.sc-icon.orange { background: var(--accent-light); color: var(--accent); }
+.sc-icon.red { background: var(--danger-light); color: var(--danger); }
+.sc-icon.green { background: var(--success-light); color: var(--success); }
+.sc-icon.blue { background: var(--info-light); color: var(--info); }
+
+.stat-card .sc-data .sc-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.stat-card .sc-data .sc-value {
+  font-size: 28px;
+  font-weight: 900;
+  color: var(--text);
+  margin-top: 2px;
+  line-height: 1.2;
+}
+
+/* ============================================
+   CARDS
+   ============================================ */
+.card {
+  background: var(--bg-card);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  border: 1px solid var(--border-light);
+}
+
+.card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 24px;
+  border-bottom: 1px solid var(--border-light);
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.card-head h2 {
+  font-size: 16px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.card-head h2 .material-icons-round { font-size: 20px; color: var(--primary); }
+
+.card-body { padding: 24px; }
+.card-body.np { padding: 0; }
+
+/* ============================================
+   SEARCH BOX
+   ============================================ */
+.search-wrap {
+  position: relative;
+  max-width: 280px;
+  min-width: 160px;
+}
+
+.search-wrap input {
+  width: 100%;
+  padding: 9px 14px 9px 38px;
+  border: 2px solid var(--border);
+  border-radius: var(--radius-lg);
+  font-size: 13px;
+  font-family: var(--font);
+  color: var(--text);
+  background: var(--bg);
+  transition: var(--transition);
+}
+
+.search-wrap input:focus {
+  outline: none;
+  border-color: var(--primary);
+  background: var(--bg-card);
+  box-shadow: 0 0 0 4px rgba(99,102,241,0.08);
+}
+
+.search-wrap .material-icons-round {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px;
+  color: var(--text-muted);
+}
+
+/* ============================================
+   TABLES
+   ============================================ */
+.table-wrap { overflow-x: auto; }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+thead th {
+  padding: 12px 16px;
+  text-align: left;
+  font-weight: 700;
+  color: var(--text-secondary);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  background: var(--bg);
+  white-space: nowrap;
+}
+
+tbody td {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border-light);
+  color: var(--text);
+  vertical-align: middle;
+}
+
+tbody tr { transition: var(--transition); }
+tbody tr:hover { background: var(--primary-light); }
+tbody tr:last-child td { border-bottom: none; }
+
+/* Row avatar */
+.row-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--primary-light);
+  color: var(--primary);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+.cell-name {
+  font-weight: 600;
+  color: var(--text);
+}
+
+/* ============================================
+   STATUS BADGES
+   ============================================ */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.badge-menunggu { background: var(--warning-light); color: #b45309; }
+.badge-proses { background: var(--info-light); color: #2563eb; }
+.badge-selesai { background: var(--success-light); color: #16a34a; }
+.badge-batal { background: var(--danger-light); color: var(--danger); }
+.badge-aktif { background: var(--primary-light); color: var(--primary-dark); }
+
+.status-select {
+  border: none;
+  font-family: var(--font);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 5px 24px 5px 10px;
+  border-radius: 999px;
+  cursor: pointer;
+  outline: none;
+  appearance: none;
+  background-repeat: no-repeat;
+  background-position: right 6px center;
+  background-size: 14px;
+  transition: var(--transition);
+}
+
+.status-select.badge-menunggu { background-color: var(--warning-light); color: #b45309; background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23b45309'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e"); }
+.status-select.badge-proses { background-color: var(--info-light); color: #2563eb; background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%232563eb'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e"); }
+.status-select.badge-selesai { background-color: var(--success-light); color: #16a34a; background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2316a34a'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e"); }
+.status-select.badge-batal { background-color: var(--danger-light); color: var(--danger); background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ef4444'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e"); }
+
+/* ============================================
+   CENTER MODAL
+   ============================================ */
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(15,23,42,0.5);
+  backdrop-filter: blur(4px);
+  z-index: 2000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.modal-overlay.open { display: flex; }
+
+.modal-box {
+  background: var(--bg-card);
+  border-radius: var(--radius-2xl);
+  box-shadow: var(--shadow-lg);
+  width: 100%;
+  max-width: 540px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  animation: modalIn 0.25s ease;
+}
+
+@keyframes modalIn {
+  from { opacity: 0; transform: scale(0.95) translateY(10px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.modal-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--border);
+}
+
+.modal-head h2 {
+  font-size: 18px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.modal-head h2 .material-icons-round { color: var(--primary); font-size: 22px; }
+
+.modal-close {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: var(--bg);
+  color: var(--text-secondary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+  font-size: 18px;
+}
+
+.modal-close:hover { background: var(--danger-light); color: var(--danger); }
+
+.modal-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 24px;
+}
+
+.modal-foot {
+  padding: 16px 24px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+/* ============================================
+   FORM ELEMENTS
+   ============================================ */
+.fg { margin-bottom: 16px; }
+
+.fg label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+
+.fg input,
+.fg select,
+.fg textarea {
+  width: 100%;
+  padding: 10px 14px;
+  border: 2px solid var(--border);
+  border-radius: var(--radius-lg);
+  font-size: 13px;
+  font-family: var(--font);
+  color: var(--text);
+  background: var(--bg-card);
+  transition: var(--transition);
+}
+
+.fg input:focus,
+.fg select:focus,
+.fg textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(99,102,241,0.08);
+}
+
+.fg textarea { resize: vertical; min-height: 80px; }
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+/* ============================================
+   JADWAL CALENDAR CARDS
+   ============================================ */
+.schedule-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 12px;
+}
+
+.schedule-card {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  border: 2px solid var(--border-light);
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.schedule-card:hover { border-color: var(--primary-200); box-shadow: var(--shadow); }
+
+.schedule-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--primary);
+}
+
+.schedule-card .sch-time {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--primary);
+  margin-bottom: 8px;
+  padding-left: 8px;
+}
+
+.schedule-card .sch-patient {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+  padding-left: 8px;
+}
+
+.schedule-card .sch-detail {
+  font-size: 12px;
+  color: var(--text-secondary);
+  padding-left: 8px;
+  margin-top: 4px;
+}
+
+.schedule-card .sch-badge {
+  margin-top: 10px;
+  padding-left: 8px;
+}
+
+/* ============================================
+   PROFILE CARDS (TERAPIS)
+   ============================================ */
+.grid-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 16px;
+}
+
+.p-card {
+  background: var(--bg-card);
+  border-radius: var(--radius-xl);
+  padding: 24px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-light);
+  transition: var(--transition);
+}
+
+.p-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: var(--primary-200); }
+
+.p-card .pc-top {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.p-card .pc-avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-lg);
+  background: var(--primary-light);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+.p-card .pc-name { font-size: 16px; font-weight: 700; }
+.p-card .pc-spec { font-size: 12px; color: var(--primary); font-weight: 600; margin-top: 1px; }
+.p-card .pc-desc { font-size: 13px; color: var(--text-secondary); margin-bottom: 14px; line-height: 1.5; }
+
+.p-card .pc-meta {
+  display: flex;
+  gap: 16px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border-light);
+}
+
+.p-card .pc-meta-item { text-align: center; flex: 1; }
+.p-card .pc-meta-val { font-size: 18px; font-weight: 800; color: var(--text); }
+.p-card .pc-meta-lbl { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+
+/* Terapi card */
+.t-card {
+  background: var(--bg-card);
+  border-radius: var(--radius-xl);
+  padding: 24px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-light);
+  border-top: 4px solid var(--primary);
+  transition: var(--transition);
+}
+
+.t-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+
+.t-card .tc-code { font-size: 11px; font-weight: 700; color: var(--primary); letter-spacing: 0.5px; }
+.t-card .tc-name { font-size: 17px; font-weight: 800; margin-top: 4px; }
+.t-card .tc-desc { font-size: 13px; color: var(--text-secondary); margin-top: 8px; line-height: 1.5; }
+.t-card .tc-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-light);
+}
+
+.t-card .tc-dur { font-size: 13px; color: var(--text-secondary); display: flex; align-items: center; gap: 4px; }
+.t-card .tc-dur .material-icons-round { font-size: 16px; }
+
+/* ============================================
+   LAPORAN — DONUT CHART & PROGRESS
+   ============================================ */
+.report-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.report-stat {
+  background: var(--bg-card);
+  border-radius: var(--radius-xl);
+  padding: 24px;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-light);
+}
+
+.report-stat .rs-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  margin-bottom: 12px;
+}
+
+.report-stat .rs-val { font-size: 28px; font-weight: 900; color: var(--text); }
+.report-stat .rs-lbl { font-size: 12px; color: var(--text-secondary); margin-top: 4px; font-weight: 500; }
+
+.donut-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  padding: 24px;
+  flex-wrap: wrap;
+}
+
+.donut-chart {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.donut-chart .donut-center {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: var(--bg-card);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+  box-shadow: var(--shadow-sm);
+}
+
+.donut-chart .donut-center .dc-val { font-size: 24px; font-weight: 900; color: var(--text); }
+.donut-chart .donut-center .dc-lbl { font-size: 10px; color: var(--text-muted); font-weight: 600; }
+
+.donut-legend { display: flex; flex-direction: column; gap: 10px; }
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.legend-item .leg-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+
+.legend-item .leg-count { margin-left: auto; font-weight: 700; color: var(--text-secondary); }
+
+/* Progress bars for report */
+.progress-list { display: flex; flex-direction: column; gap: 14px; }
+
+.progress-item .pi-top {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.progress-item .pi-label { font-size: 13px; font-weight: 600; color: var(--text); }
+.progress-item .pi-value { font-size: 13px; font-weight: 700; color: var(--primary); }
+
+.progress-item .pi-bar {
+  height: 10px;
+  background: var(--bg);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progress-item .pi-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: var(--primary);
+  transition: width 0.8s ease;
+}
+
+/* ============================================
+   CEK PASIEN
+   ============================================ */
+.check-box {
+  max-width: 500px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.check-box .cb-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: var(--primary-light);
+  color: var(--primary);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  margin-bottom: 16px;
+}
+
+.check-box h2 { font-size: 20px; font-weight: 800; margin-bottom: 4px; }
+.check-box p { font-size: 14px; color: var(--text-secondary); margin-bottom: 24px; }
+
+.check-box .cb-input-row {
+  display: flex;
+  gap: 8px;
+  max-width: 360px;
+  margin: 0 auto;
+}
+
+.check-box .cb-input-row input {
+  flex: 1;
+  padding: 12px 16px;
+  border: 2px solid var(--border);
+  border-radius: var(--radius-lg);
+  font-size: 14px;
+  font-family: var(--font);
+  color: var(--text);
+  transition: var(--transition);
+}
+
+.check-box .cb-input-row input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(99,102,241,0.08);
+}
+
+.check-result {
+  margin-top: 24px;
+  text-align: left;
+}
+
+.check-result .cr-info {
+  background: var(--primary-light);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  margin-bottom: 16px;
+}
+
+.check-result .cr-info h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--primary-dark);
+  margin-bottom: 12px;
+}
+
+.cr-detail-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  font-size: 13px;
+  border-bottom: 1px solid rgba(99,102,241,0.1);
+}
+
+.cr-detail-row:last-child { border-bottom: none; }
+.cr-detail-row .cdr-label { color: var(--text-secondary); }
+.cr-detail-row .cdr-value { font-weight: 600; color: var(--text); }
+
+/* ============================================
+   TOAST NOTIFICATION
+   ============================================ */
+.toast-container {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.toast {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  padding: 14px 20px;
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  animation: toastIn 0.3s ease;
+  border-left: 4px solid var(--success);
+  min-width: 280px;
+}
+
+.toast.error { border-left-color: var(--danger); }
+.toast .material-icons-round { font-size: 20px; }
+.toast.success .material-icons-round { color: var(--success); }
+.toast.error .material-icons-round { color: var(--danger); }
+
+@keyframes toastIn {
+  from { opacity: 0; transform: translateX(40px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* ============================================
+   LOADING SPINNER
+   ============================================ */
+.spinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255,255,255,0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+.spinner.dark {
+  border-color: var(--border);
+  border-top-color: var(--primary);
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.loading-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  color: var(--text-secondary);
+  font-size: 14px;
+  gap: 12px;
+}
+
+/* ============================================
+   EMPTY STATE
+   ============================================ */
+.empty-state {
+  text-align: center;
+  padding: 48px 24px;
+  color: var(--text-muted);
+}
+
+.empty-state .material-icons-round {
+  font-size: 48px;
+  margin-bottom: 12px;
+  opacity: 0.5;
+}
+
+.empty-state h3 { font-size: 16px; font-weight: 700; color: var(--text-secondary); margin-bottom: 4px; }
+.empty-state p { font-size: 13px; }
+
+/* ============================================
+   MOBILE SIDEBAR OVERLAY
+   ============================================ */
+.sidebar-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(15,23,42,0.5);
+  z-index: 999;
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.sidebar-overlay.show { display: block; opacity: 1; }
+
+/* ============================================
+   RESPONSIVE — MOBILE FIRST
+   ============================================ */
+@media (max-width: 768px) {
+  .login-branding { display: none; }
+  .login-form-side { padding: 24px; }
+  .login-form-box .mobile-brand { display: block; }
+
+  .sidebar {
+    transform: translateX(-100%);
+    z-index: 1001;
+  }
+
+  .sidebar.open { transform: translateX(0); }
+
+  .header-bar { left: 0; }
+  .hamburger-btn { display: flex; }
+  .header-date { display: none; }
+
+  .main-area { margin-left: 0; }
+
+  .page-content { padding: 16px; }
+
+  .stats-row { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .stat-card { padding: 14px 16px; gap: 10px; }
+  .stat-card .sc-icon { width: 40px; height: 40px; font-size: 20px; }
+  .stat-card .sc-data .sc-value { font-size: 22px; }
+
+  .page-head { flex-direction: column; }
+  .page-head .ph-actions { width: 100%; }
+
+  .form-row { grid-template-columns: 1fr; }
+
+  .modal-overlay { padding: 12px; }
+  .modal-box { max-height: 95vh; border-radius: var(--radius-xl); }
+
+  .schedule-grid { grid-template-columns: 1fr; }
+  .grid-cards { grid-template-columns: 1fr; }
+
+  .donut-wrap { flex-direction: column; gap: 24px; }
+
+  .report-grid { grid-template-columns: 1fr 1fr; }
+
+  .card-head { padding: 14px 16px; }
+  .card-body { padding: 16px; }
+
+  .check-box .cb-input-row { flex-direction: column; }
+}
+
+@media (max-width: 480px) {
+  .stats-row { grid-template-columns: 1fr; }
+  .report-grid { grid-template-columns: 1fr; }
+  .stat-card .sc-data .sc-value { font-size: 20px; }
+}
+
+/* ============================================
+   PRINT HIDE
+   ============================================ */
+@media print {
+  .sidebar, .header-bar, .sidebar-overlay { display: none !important; }
+  .main-area { margin-left: 0 !important; padding-top: 0 !important; }
+}
+
+/* ============================================
+   PUBLIC PATIENT CHECK ON LOGIN PAGE
+   ============================================ */
+.login-divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 20px 0;
+  color: var(--text-muted);
+  font-size: 13px;
+}
+.login-divider::before,
+.login-divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid var(--border);
+}
+.login-divider:not(:empty)::before {
+  margin-right: .5em;
+}
+.login-divider:not(:empty)::after {
+  margin-left: .5em;
+}
+
+.patient-check-card {
+  background: var(--bg-card);
+  border: 2px dashed var(--border);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  text-align: center;
+  transition: var(--transition);
+}
+.patient-check-card:hover {
+  border-color: var(--primary-200);
+  background: var(--primary-light);
+}
+.patient-check-card h3 {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+.patient-check-card p {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-bottom: 12px;
+}
+.btn-check-patient-public {
+  width: 100%;
+  padding: 10px 14px;
+  background: #ffffff;
+  border: 1.5px solid var(--primary);
+  color: var(--primary);
+  border-radius: var(--radius-lg);
+  font-size: 13px;
+  font-weight: 600;
+  font-family: var(--font);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: var(--transition);
+}
+.btn-check-patient-public:hover {
+  background: var(--primary);
+  color: #ffffff;
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================
+     TOAST CONTAINER
+     ============================================ -->
+<div class="toast-container" id="toastContainer"></div>
+
+<!-- ============================================
+     LOGIN PAGE
+     ============================================ -->
+<div id="loginPage">
+  <div class="login-branding">
+    <div class="brand-logo">
+      <span class="material-icons-round">fitness_center</span>
+    </div>
+    <h1>FisioActive</h1>
+    <p>Sistem Manajemen Klinik Fisioterapi Modern & Terintegrasi</p>
+    <div class="login-features">
+      <div class="feat-item"><span class="material-icons-round">check_circle</span> Manajemen Pasien Lengkap</div>
+      <div class="feat-item"><span class="material-icons-round">check_circle</span> Jadwal & Rekam Medis Digital</div>
+      <div class="feat-item"><span class="material-icons-round">check_circle</span> Laporan & Analisis Real-time</div>
+      <div class="feat-item"><span class="material-icons-round">check_circle</span> Multi-role: Admin & Terapis</div>
+    </div>
+  </div>
+  <div class="login-form-side">
+    <div class="login-form-box">
+      <div class="mobile-brand">
+        <div class="brand-icon"><span class="material-icons-round">fitness_center</span></div>
+        <h2>FisioActive</h2>
+      </div>
+      <h2>Selamat Datang! 👋</h2>
+      <p class="login-subtitle">Masuk ke akun Anda untuk melanjutkan</p>
+      <div class="login-error" id="loginError">
+        <span class="material-icons-round">error</span>
+        <span id="loginErrorMsg">Username atau password salah</span>
+      </div>
+      <form id="loginForm" onsubmit="handleLogin(event)">
+        <div class="form-group">
+          <label for="loginUser">Username</label>
+          <div class="input-wrapper">
+            <span class="material-icons-round">person</span>
+            <input type="text" id="loginUser" placeholder="Masukkan username" required autocomplete="username">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="loginPass">Password</label>
+          <div class="input-wrapper">
+            <span class="material-icons-round">lock</span>
+            <input type="password" id="loginPass" placeholder="Masukkan password" required autocomplete="current-password">
+          </div>
+        </div>
+        <button type="submit" class="btn-login" id="loginBtn">
+          <span class="material-icons-round">login</span> Masuk
+        </button>
+      </form>
+      
+      <div class="login-divider">
+        <span>atau</span>
+      </div>
+      
+      <div class="patient-check-card">
+        <h3>🔍 Cek Status Pasien</h3>
+        <p>Lihat jadwal & rekam medis Anda tanpa perlu login.</p>
+        <button type="button" class="btn-check-patient-public" onclick="openPublicCheckModal()">
+          <span class="material-icons-round">person_search</span> Cek Status Pasien
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================
+     APP LAYOUT
+     ============================================ -->
+<div id="appLayout">
+  <!-- SIDEBAR OVERLAY (MOBILE) -->
+  <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <div class="s-logo"><span class="material-icons-round">fitness_center</span></div>
+      <div class="s-brand">
+        <h1>FisioActive</h1>
+        <span>Klinik Fisioterapi</span>
+      </div>
+    </div>
+    <nav class="sidebar-nav" id="sidebarNav">
+      <div class="nav-label">Menu Utama</div>
+      <button class="nav-link active" data-page="dashboard" onclick="navigateTo('dashboard')">
+        <span class="material-icons-round">dashboard</span><span>Dashboard</span>
+      </button>
+      <button class="nav-link admin-only" data-page="pendaftaran" onclick="navigateTo('pendaftaran')">
+        <span class="material-icons-round">person_add</span><span>Pendaftaran</span>
+      </button>
+      <button class="nav-link admin-only" data-page="datapasien" onclick="navigateTo('datapasien')">
+        <span class="material-icons-round">people</span><span>Data Pasien</span>
+      </button>
+      <button class="nav-link" data-page="jadwal" onclick="navigateTo('jadwal')">
+        <span class="material-icons-round">calendar_month</span><span>Jadwal</span>
+      </button>
+      <button class="nav-link" data-page="rekammedis" onclick="navigateTo('rekammedis')">
+        <span class="material-icons-round">medical_information</span><span>Rekam Medis</span>
+      </button>
+
+      <div class="nav-label">Master Data</div>
+      <button class="nav-link" data-page="terapis" onclick="navigateTo('terapis')">
+        <span class="material-icons-round">badge</span><span>Terapis</span>
+      </button>
+      <button class="nav-link" data-page="jenisterapi" onclick="navigateTo('jenisterapi')">
+        <span class="material-icons-round">healing</span><span>Jenis Terapi</span>
+      </button>
+
+      <div class="nav-label">Lainnya</div>
+      <button class="nav-link admin-only" data-page="laporan" onclick="navigateTo('laporan')">
+        <span class="material-icons-round">assessment</span><span>Laporan</span>
+      </button>
+      <button class="nav-link" data-page="cekpasien" onclick="navigateTo('cekpasien')">
+        <span class="material-icons-round">search</span><span>Cek Pasien</span>
+      </button>
+      <button class="nav-link" onclick="handleLogout()" style="margin-top:8px; color:#f87171;">
+        <span class="material-icons-round">logout</span><span>Keluar</span>
+      </button>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <div class="user-avatar" id="sidebarAvatar">A</div>
+        <div class="user-info">
+          <div class="user-name" id="sidebarName">Admin</div>
+          <div class="user-role" id="sidebarRole">Administrator</div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- HEADER BAR -->
+  <header class="header-bar" id="headerBar">
+    <button class="hamburger-btn" onclick="toggleSidebar()">
+      <span class="material-icons-round">menu</span>
+    </button>
+    <div class="header-title" id="headerTitle">Dashboard</div>
+    <div class="header-right">
+      <div class="header-date" id="headerDate">
+        <span class="material-icons-round">event</span>
+        <span id="todayDate"></span>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="main-area">
+    <div class="page-content">
+
+      <!-- ==================== DASHBOARD ==================== -->
+      <section class="page-section active" id="page-dashboard">
+        <div class="page-head">
+          <div class="ph-text">
+            <h1 id="dashGreeting">Dashboard</h1>
+            <p id="dashSubtitle">Ringkasan aktivitas klinik hari ini</p>
+          </div>
+        </div>
+        <div class="stats-row" id="dashStats">
+          <div class="stat-card">
+            <div class="sc-icon indigo"><span class="material-icons-round">people</span></div>
+            <div class="sc-data"><div class="sc-label">Total Pasien</div><div class="sc-value" id="statTotal">0</div></div>
+          </div>
+          <div class="stat-card">
+            <div class="sc-icon blue"><span class="material-icons-round">event_available</span></div>
+            <div class="sc-data"><div class="sc-label" id="statSesiLabel">Sesi Hari Ini</div><div class="sc-value" id="statSesi">0</div></div>
+          </div>
+          <div class="stat-card">
+            <div class="sc-icon orange"><span class="material-icons-round">hourglass_top</span></div>
+            <div class="sc-data"><div class="sc-label" id="statWaitLabel">Menunggu</div><div class="sc-value" id="statWait">0</div></div>
+          </div>
+          <div class="stat-card">
+            <div class="sc-icon green"><span class="material-icons-round">check_circle</span></div>
+            <div class="sc-data"><div class="sc-label">Sesi Selesai</div><div class="sc-value" id="statDone">0</div></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-head">
+            <h2><span class="material-icons-round">list_alt</span> Sesi Aktif Hari Ini</h2>
+            <div class="search-wrap">
+              <span class="material-icons-round">search</span>
+              <input type="text" id="dashSearch" placeholder="Cari pasien..." oninput="filterDashTable()">
+            </div>
+          </div>
+          <div class="card-body np">
+            <div class="table-wrap">
+              <table>
+                <thead><tr>
+                  <th>Pasien</th><th>Terapi</th><th>Terapis</th><th>Jam</th><th>Ruang</th><th>Status</th>
+                </tr></thead>
+                <tbody id="dashTableBody">
+                  <tr><td colspan="6"><div class="loading-page"><div class="spinner dark"></div>Memuat data...</div></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== PENDAFTARAN ==================== -->
+      <section class="page-section" id="page-pendaftaran">
+        <div class="page-head">
+          <div class="ph-text">
+            <h1>Pendaftaran</h1>
+            <p>Kelola pendaftaran pasien baru</p>
+          </div>
+          <div class="ph-actions">
+            <button class="btn btn-primary" onclick="openModal('modalPendaftaran')">
+              <span class="material-icons-round">person_add</span> Tambah Pendaftaran
+            </button>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-head">
+            <h2><span class="material-icons-round">assignment</span> Daftar Pendaftaran</h2>
+            <div class="search-wrap">
+              <span class="material-icons-round">search</span>
+              <input type="text" id="regSearch" placeholder="Cari..." oninput="filterTable('regSearch','regTableBody')">
+            </div>
+          </div>
+          <div class="card-body np">
+            <div class="table-wrap">
+              <table>
+                <thead><tr>
+                  <th>ID</th><th>Nama</th><th>Jenis Kelamin</th><th>No HP</th><th>Tgl Daftar</th><th>Status</th><th>Aksi</th>
+                </tr></thead>
+                <tbody id="regTableBody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== DATA PASIEN ==================== -->
+      <section class="page-section" id="page-datapasien">
+        <div class="page-head">
+          <div class="ph-text">
+            <h1>Data Pasien</h1>
+            <p>Master data seluruh pasien terdaftar</p>
+          </div>
+          <div class="ph-actions">
+            <button class="btn btn-outline" onclick="exportCSV()">
+              <span class="material-icons-round">download</span> Export CSV
+            </button>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-head">
+            <h2><span class="material-icons-round">folder_shared</span> Pasien Terdaftar</h2>
+            <div class="search-wrap">
+              <span class="material-icons-round">search</span>
+              <input type="text" id="patSearch" placeholder="Cari pasien..." oninput="filterTable('patSearch','patTableBody')">
+            </div>
+          </div>
+          <div class="card-body np">
+            <div class="table-wrap">
+              <table>
+                <thead><tr>
+                  <th>ID</th><th>Nama</th><th>Jenis Kelamin</th><th>Tgl Lahir</th><th>No HP</th><th>Email</th><th>Status</th>
+                </tr></thead>
+                <tbody id="patTableBody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== JADWAL ==================== -->
+      <section class="page-section" id="page-jadwal">
+        <div class="page-head">
+          <div class="ph-text">
+            <h1>Jadwal</h1>
+            <p>Kelola jadwal kunjungan pasien</p>
+          </div>
+          <div class="ph-actions">
+            <button class="btn btn-primary" onclick="openModal('modalJadwal')">
+              <span class="material-icons-round">add</span> Tambah Jadwal
+            </button>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-head">
+            <h2><span class="material-icons-round">calendar_month</span> Jadwal Hari Ini</h2>
+            <div class="search-wrap">
+              <span class="material-icons-round">search</span>
+              <input type="text" id="schSearch" placeholder="Cari..." oninput="renderJadwal()">
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="schedule-grid" id="scheduleGrid">
+              <div class="loading-page"><div class="spinner dark"></div>Memuat jadwal...</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== REKAM MEDIS ==================== -->
+      <section class="page-section" id="page-rekammedis">
+        <div class="page-head">
+          <div class="ph-text">
+            <h1>Rekam Medis</h1>
+            <p>Arsip riwayat medis pasien</p>
+          </div>
+          <div class="ph-actions">
+            <button class="btn btn-primary" onclick="openModal('modalRekamMedis')">
+              <span class="material-icons-round">add</span> Tambah Rekam Medis
+            </button>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-head">
+            <h2><span class="material-icons-round">medical_information</span> Daftar Rekam Medis</h2>
+            <div class="search-wrap">
+              <span class="material-icons-round">search</span>
+              <input type="text" id="rmSearch" placeholder="Cari..." oninput="filterTable('rmSearch','rmTableBody')">
+            </div>
+          </div>
+          <div class="card-body np">
+            <div class="table-wrap">
+              <table>
+                <thead><tr>
+                  <th>ID Rekam</th><th>Pasien</th><th>Diagnosa</th><th>Rekomendasi</th><th>Pemeriksa</th><th>Tanggal</th><th>Status</th>
+                </tr></thead>
+                <tbody id="rmTableBody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== TERAPIS ==================== -->
+      <section class="page-section" id="page-terapis">
+        <div class="page-head">
+          <div class="ph-text">
+            <h1>Terapis</h1>
+            <p>Kelola data terapis klinik</p>
+          </div>
+          <div class="ph-actions">
+            <button class="btn btn-primary" onclick="openModal('modalTerapis')">
+              <span class="material-icons-round">add</span> Tambah Terapis
+            </button>
+          </div>
+        </div>
+        <div class="grid-cards" id="terapisGrid"></div>
+      </section>
+
+      <!-- ==================== JENIS TERAPI ==================== -->
+      <section class="page-section" id="page-jenisterapi">
+        <div class="page-head">
+          <div class="ph-text">
+            <h1>Jenis Terapi</h1>
+            <p>Katalog layanan terapi yang tersedia</p>
+          </div>
+          <div class="ph-actions">
+            <button class="btn btn-primary" onclick="openModal('modalJenisTerapi')">
+              <span class="material-icons-round">add</span> Tambah Terapi
+            </button>
+          </div>
+        </div>
+        <div class="grid-cards" id="terapiGrid"></div>
+      </section>
+
+      <!-- ==================== LAPORAN ==================== -->
+      <section class="page-section" id="page-laporan">
+        <div class="page-head">
+          <div class="ph-text">
+            <h1>Laporan</h1>
+            <p>Statistik dan analisis klinik</p>
+          </div>
+        </div>
+        <div class="report-grid" id="reportStats"></div>
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 16px;" id="reportCharts">
+          <div class="card">
+            <div class="card-head"><h2><span class="material-icons-round">pie_chart</span> Distribusi Terapi</h2></div>
+            <div class="card-body">
+              <div class="donut-wrap" id="donutChart"></div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-head"><h2><span class="material-icons-round">bar_chart</span> Performa Terapis</h2></div>
+            <div class="card-body">
+              <div class="progress-list" id="terapisProgress"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== CEK PASIEN ==================== -->
+      <section class="page-section" id="page-cekpasien">
+        <div class="page-head">
+          <div class="ph-text">
+            <h1>Cek Pasien</h1>
+            <p>Periksa status dan riwayat pasien</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <div class="check-box">
+              <div class="cb-icon"><span class="material-icons-round">person_search</span></div>
+              <h2>Cek Status Pasien</h2>
+              <p>Masukkan ID Pasien atau ID Rekam Medis untuk melihat informasi dan riwayat</p>
+              <div class="cb-input-row">
+                <input type="text" id="checkPatientId" placeholder="Contoh: FA001 atau MR001">
+                <button class="btn btn-primary" onclick="checkPatient()">
+                  <span class="material-icons-round">search</span> Cek Status
+                </button>
+              </div>
+              <div class="check-result" id="checkResult" style="display:none;"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+</div>
+
+<!-- ============================================
+     MODALS
+     ============================================ -->
+
+<!-- MODAL: CEK PASIEN PUBLIK -->
+<div class="modal-overlay" id="modalPublicCekPasien">
+  <div class="modal-box" style="max-width: 600px;">
+    <div class="modal-head">
+      <h2><span class="material-icons-round">person_search</span> Cek Status Pasien (Publik)</h2>
+      <button class="modal-close" onclick="closeModal('modalPublicCekPasien')"><span class="material-icons-round">close</span></button>
+    </div>
+    <div class="modal-body" style="overflow-y: auto;">
+      <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 16px;">
+        Masukkan ID Pasien (contoh: <strong>FA001</strong>) atau ID Rekam Medis (contoh: <strong>MR001</strong>) untuk melihat status dan riwayat terapi.
+      </p>
+      <div class="cb-input-row" style="display: flex; gap: 8px; margin-bottom: 16px;">
+        <input type="text" id="publicCheckPatientId" placeholder="Masukkan ID Pasien / Rekam Medis" style="flex: 1; padding: 10px 14px; border: 2px solid var(--border); border-radius: var(--radius-lg); font-family: var(--font); font-size: 14px;" onkeydown="if(event.key === 'Enter') checkPatientPublic()">
+        <button class="btn btn-primary" onclick="checkPatientPublic()" style="padding: 10px 16px; display: flex; align-items: center; gap: 6px;">
+          <span class="material-icons-round">search</span> Cek Status
+        </button>
+      </div>
+      <div class="check-result" id="publicCheckResult" style="display:none; max-height: 55vh; overflow-y: auto; padding: 12px; border: 1px solid var(--border); border-radius: var(--radius-lg); background: var(--bg);"></div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: PENDAFTARAN -->
+<div class="modal-overlay" id="modalPendaftaran">
+  <div class="modal-box">
+    <div class="modal-head">
+      <h2><span class="material-icons-round">person_add</span> Pendaftaran Baru</h2>
+      <button class="modal-close" onclick="closeModal('modalPendaftaran')"><span class="material-icons-round">close</span></button>
+    </div>
+    <div class="modal-body">
+      <div class="form-row">
+        <div class="fg"><label>Nama Lengkap *</label><input type="text" id="regNama" required></div>
+        <div class="fg"><label>No. KTP/NIK</label><input type="text" id="regNIK"></div>
+      </div>
+      <div class="form-row">
+        <div class="fg"><label>Tanggal Lahir</label><input type="date" id="regTglLahir"></div>
+        <div class="fg"><label>Jenis Kelamin</label>
+          <select id="regGender"><option value="Laki-laki">Laki-laki</option><option value="Perempuan">Perempuan</option></select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="fg"><label>No. HP</label><input type="tel" id="regHP"></div>
+        <div class="fg"><label>Email</label><input type="email" id="regEmail"></div>
+      </div>
+      <div class="form-row">
+        <div class="fg"><label>Jenis Terapi</label>
+          <select id="regTerapi"><option value="">Pilih terapi...</option></select>
+        </div>
+        <div class="fg"><label>Terapis</label>
+          <select id="regTerapist"><option value="">Pilih terapis...</option></select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="fg"><label>Tanggal Kunjungan</label><input type="date" id="regTglKunjung"></div>
+        <div class="fg"><label>Jam Kunjungan</label><input type="time" id="regJam"></div>
+      </div>
+      <div class="fg"><label>Keluhan / Catatan</label><textarea id="regKeluhan" rows="3" placeholder="Tulis keluhan pasien..."></textarea></div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-ghost" onclick="closeModal('modalPendaftaran')">Batal</button>
+      <button class="btn btn-primary" onclick="submitPendaftaran()"><span class="material-icons-round">save</span> Simpan</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: JADWAL -->
+<div class="modal-overlay" id="modalJadwal">
+  <div class="modal-box">
+    <div class="modal-head">
+      <h2><span class="material-icons-round">calendar_month</span> Tambah Jadwal</h2>
+      <button class="modal-close" onclick="closeModal('modalJadwal')"><span class="material-icons-round">close</span></button>
+    </div>
+    <div class="modal-body">
+      <div class="fg"><label>Pasien *</label>
+        <select id="jadPasien"><option value="">Pilih pasien...</option></select>
+      </div>
+      <div class="form-row">
+        <div class="fg"><label>Jenis Terapi</label>
+          <select id="jadTerapi"><option value="">Pilih terapi...</option></select>
+        </div>
+        <div class="fg"><label>Terapis</label>
+          <select id="jadTerapist"><option value="">Pilih terapis...</option></select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="fg"><label>Tanggal</label><input type="date" id="jadTanggal"></div>
+        <div class="fg"><label>Jam</label><input type="time" id="jadJam"></div>
+      </div>
+      <div class="fg"><label>Ruang</label><input type="text" id="jadRuang" placeholder="Contoh: Ruang 1"></div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-ghost" onclick="closeModal('modalJadwal')">Batal</button>
+      <button class="btn btn-primary" onclick="submitJadwal()"><span class="material-icons-round">save</span> Simpan</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: REKAM MEDIS -->
+<div class="modal-overlay" id="modalRekamMedis">
+  <div class="modal-box">
+    <div class="modal-head">
+      <h2><span class="material-icons-round">medical_information</span> Tambah Rekam Medis</h2>
+      <button class="modal-close" onclick="closeModal('modalRekamMedis')"><span class="material-icons-round">close</span></button>
+    </div>
+    <div class="modal-body">
+      <div class="fg"><label>Pasien *</label>
+        <select id="rmPasien"><option value="">Pilih pasien...</option></select>
+      </div>
+      <div class="fg"><label>Diagnosa *</label><input type="text" id="rmDiagnosa" placeholder="Masukkan diagnosa"></div>
+      <div class="fg"><label>Rekomendasi Terapi</label><input type="text" id="rmRekomendasi" placeholder="Rekomendasi terapi"></div>
+      <div class="fg"><label>Catatan</label><textarea id="rmCatatan" rows="3" placeholder="Catatan tambahan..."></textarea></div>
+      <div class="form-row">
+        <div class="fg"><label>Pemeriksa</label><input type="text" id="rmPemeriksa" placeholder="Nama pemeriksa"></div>
+        <div class="fg"><label>Tanggal Periksa</label><input type="date" id="rmTanggal"></div>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-ghost" onclick="closeModal('modalRekamMedis')">Batal</button>
+      <button class="btn btn-primary" onclick="submitRekamMedis()"><span class="material-icons-round">save</span> Simpan</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: TERAPIS -->
+<div class="modal-overlay" id="modalTerapis">
+  <div class="modal-box">
+    <div class="modal-head">
+      <h2><span class="material-icons-round">badge</span> Tambah Terapis</h2>
+      <button class="modal-close" onclick="closeModal('modalTerapis')"><span class="material-icons-round">close</span></button>
+    </div>
+    <div class="modal-body">
+      <div class="fg"><label>Nama Lengkap *</label><input type="text" id="tNama" placeholder="Nama terapis"></div>
+      <div class="fg"><label>Spesialisasi</label><input type="text" id="tSpesialisasi" placeholder="Contoh: Fisioterapi Muskuloskeletal"></div>
+      <div class="fg"><label>Deskripsi</label><textarea id="tDeskripsi" rows="3" placeholder="Deskripsi singkat..."></textarea></div>
+      <div class="form-row">
+        <div class="fg"><label>Shift Mulai</label><input type="time" id="tShiftMulai" value="08:00"></div>
+        <div class="fg"><label>Shift Selesai</label><input type="time" id="tShiftSelesai" value="17:00"></div>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-ghost" onclick="closeModal('modalTerapis')">Batal</button>
+      <button class="btn btn-primary" onclick="submitTerapis()"><span class="material-icons-round">save</span> Simpan</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: JENIS TERAPI -->
+<div class="modal-overlay" id="modalJenisTerapi">
+  <div class="modal-box">
+    <div class="modal-head">
+      <h2><span class="material-icons-round">healing</span> Tambah Jenis Terapi</h2>
+      <button class="modal-close" onclick="closeModal('modalJenisTerapi')"><span class="material-icons-round">close</span></button>
+    </div>
+    <div class="modal-body">
+      <div class="fg"><label>Nama Terapi *</label><input type="text" id="jtNama" placeholder="Nama terapi"></div>
+      <div class="fg"><label>Deskripsi</label><textarea id="jtDeskripsi" rows="3" placeholder="Deskripsi terapi..."></textarea></div>
+      <div class="fg"><label>Durasi (menit)</label><input type="number" id="jtDurasi" placeholder="30" min="1"></div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-ghost" onclick="closeModal('modalJenisTerapi')">Batal</button>
+      <button class="btn btn-primary" onclick="submitJenisTerapi()"><span class="material-icons-round">save</span> Simpan</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================
+     JAVASCRIPT
+     ============================================ -->
+<script>
+// ============================================
+// CONFIG & STATE
+// ============================================
+
+// GANTI URL INI dengan URL deployment Google Apps Script Anda
+const API_URL = 'https://script.google.com/macros/s/AKfycbxAePnrMAzmrdqcJtMkzzGTjhDkBWvSXFNf6wxw8pd_ivI4KnVNaGdEw5-88R_XR9Ls/exec';
+
+let APP = {
+  user: null,
+  role: null,
+  fullName: '',
+  data: { Pasien: [], RekamMedis: [], Jadwal: [], Users: [], Terapis: [], JenisTerapi: [] },
+  currentPage: 'dashboard'
+};
+
+// ============================================
+// TOAST NOTIFICATION
+// ============================================
+
+function showToast(message, type = 'success') {
+  const container = document.getElementById('toastContainer');
+  const toast = document.createElement('div');
+  toast.className = 'toast ' + type;
+  toast.innerHTML = '<span class="material-icons-round">' + (type === 'success' ? 'check_circle' : 'error') + '</span>' + message;
+  container.appendChild(toast);
+  setTimeout(() => { toast.style.opacity = '0'; toast.style.transform = 'translateX(40px)'; setTimeout(() => toast.remove(), 300); }, 3000);
+}
+
+// ============================================
+// API HELPER
+// ============================================
+
+async function apiGet(action, params = {}) {
+  if (typeof google !== 'undefined' && google.script && google.script.run) {
+    return new Promise((resolve, reject) => {
+      google.script.run
+        .withSuccessHandler(res => {
+          if (res && res.error) reject(new Error(res.error));
+          else resolve(res);
+        })
+        .withFailureHandler(err => reject(err))
+        .runAction(action, params);
+    });
+  } else {
+    let url = API_URL + '?action=' + action;
+    for (let k in params) url += '&' + k + '=' + encodeURIComponent(params[k]);
+    const res = await fetch(url);
+    const data = await res.json();
+    if (data && data.error) throw new Error(data.error);
+    return data;
+  }
+}
+
+async function apiPost(action, data) {
+  if (typeof google !== 'undefined' && google.script && google.script.run) {
+    return new Promise((resolve, reject) => {
+      google.script.run
+        .withSuccessHandler(res => {
+          if (res && res.error) reject(new Error(res.error));
+          else resolve(res);
+        })
+        .withFailureHandler(err => reject(err))
+        .runAction(action, data);
+    });
+  } else {
+    const res = await fetch(API_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify({ action, ...data })
+    });
+    const result = await res.json();
+    if (result && result.error) throw new Error(result.error);
+    return result;
+  }
+}
+
+// ============================================
+// LOGIN
+// ============================================
+
+async function handleLogin(e) {
+  e.preventDefault();
+  const btn = document.getElementById('loginBtn');
+  const errDiv = document.getElementById('loginError');
+  const errMsg = document.getElementById('loginErrorMsg');
+  const username = document.getElementById('loginUser').value.trim();
+  const password = document.getElementById('loginPass').value;
+
+  btn.classList.add('loading');
+  btn.innerHTML = '<div class="spinner"></div> Memproses...';
+  errDiv.classList.remove('show');
+
+  try {
+    const allData = await apiGet('getAllData');
+    const users = allData.Users || [];
+    const found = users.find(u => u.Username === username && u.Password === password);
+
+    if (found) {
+      APP.user = found.Username;
+      APP.role = found.Role;
+      APP.fullName = found.Nama_Lengkap;
+      APP.data = allData;
+      showApp();
+      showToast('Berhasil masuk sebagai ' + APP.fullName);
+    } else {
+      errMsg.textContent = 'Username atau password salah!';
+      errDiv.classList.add('show');
+    }
+  } catch (err) {
+    console.error('Login error:', err);
+    errMsg.textContent = 'Gagal terhubung ke server. Periksa koneksi Anda.';
+    errDiv.classList.add('show');
+  }
+
+  btn.classList.remove('loading');
+  btn.innerHTML = '<span class="material-icons-round">login</span> Masuk';
+}
+
+function handleLogout() {
+  APP.user = null;
+  APP.role = null;
+  APP.fullName = '';
+  document.getElementById('loginPage').style.display = 'flex';
+  document.getElementById('appLayout').classList.remove('active');
+  document.getElementById('loginUser').value = '';
+  document.getElementById('loginPass').value = '';
+  document.getElementById('loginError').classList.remove('show');
+}
+
+// ============================================
+// SHOW APP
+// ============================================
+
+function showApp() {
+  document.getElementById('loginPage').style.display = 'none';
+  document.getElementById('appLayout').classList.add('active');
+
+  // Set date
+  const now = new Date();
+  const opts = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+  document.getElementById('todayDate').textContent = now.toLocaleDateString('id-ID', opts);
+
+  // Set user info in sidebar
+  document.getElementById('sidebarAvatar').textContent = APP.fullName.charAt(0).toUpperCase();
+  document.getElementById('sidebarName').textContent = APP.fullName;
+  document.getElementById('sidebarRole').textContent = APP.role === 'admin' ? 'Administrator' : 'Terapis';
+
+  // Show/hide admin-only menus
+  document.querySelectorAll('.admin-only').forEach(el => {
+    el.style.display = APP.role === 'admin' ? '' : 'none';
+  });
+
+  navigateTo('dashboard');
+}
+
+// ============================================
+// NAVIGATION
+// ============================================
+
+function navigateTo(page) {
+  APP.currentPage = page;
+
+  // Update sidebar active state
+  document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+  const activeLink = document.querySelector('.nav-link[data-page="' + page + '"]');
+  if (activeLink) activeLink.classList.add('active');
+
+  // Update header title
+  const titles = {
+    dashboard: 'Dashboard', pendaftaran: 'Pendaftaran', datapasien: 'Data Pasien',
+    jadwal: 'Jadwal', rekammedis: 'Rekam Medis', terapis: 'Terapis',
+    jenisterapi: 'Jenis Terapi', laporan: 'Laporan', cekpasien: 'Cek Pasien'
+  };
+  document.getElementById('headerTitle').textContent = titles[page] || 'Dashboard';
+
+  // Show page section
+  document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
+  const section = document.getElementById('page-' + page);
+  if (section) section.classList.add('active');
+
+  // Render page
+  renderPage(page);
+
+  // Close sidebar on mobile
+  if (window.innerWidth <= 768) {
+    document.getElementById('sidebar').classList.remove('open');
+    document.getElementById('sidebarOverlay').classList.remove('show');
+  }
+}
+
+function renderPage(page) {
+  switch (page) {
+    case 'dashboard': renderDashboard(); break;
+    case 'pendaftaran': renderPendaftaran(); break;
+    case 'datapasien': renderDataPasien(); break;
+    case 'jadwal': renderJadwal(); break;
+    case 'rekammedis': renderRekamMedis(); break;
+    case 'terapis': renderTerapis(); break;
+    case 'jenisterapi': renderJenisTerapi(); break;
+    case 'laporan': renderLaporan(); break;
+  }
+}
+
+// ============================================
+// SIDEBAR TOGGLE
+// ============================================
+
+function toggleSidebar() {
+  const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('sidebarOverlay');
+  sidebar.classList.toggle('open');
+  overlay.classList.toggle('show');
+}
+
+// ============================================
+// MODAL
+// ============================================
+
+function openModal(id) {
+  document.getElementById(id).classList.add('open');
+  populateDropdowns();
+}
+
+function closeModal(id) {
+  document.getElementById(id).classList.remove('open');
+}
+
+// Close modal on overlay click
+document.addEventListener('click', function(e) {
+  if (e.target.classList.contains('modal-overlay')) {
+    e.target.classList.remove('open');
+  }
+});
+
+// ============================================
+// POPULATE DROPDOWNS
+// ============================================
+
+function populateDropdowns() {
+  // Terapi options
+  const terapiOpts = APP.data.JenisTerapi.map(t => '<option value="' + t.Nama_Terapi + '">' + t.Nama_Terapi + '</option>').join('');
+  ['regTerapi', 'jadTerapi'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.innerHTML = '<option value="">Pilih terapi...</option>' + terapiOpts;
+  });
+
+  // Terapis options
+  const terapistOpts = APP.data.Terapis.map(t => '<option value="' + t.Nama + '">' + t.Nama + '</option>').join('');
+  ['regTerapist', 'jadTerapist'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.innerHTML = '<option value="">Pilih terapis...</option>' + terapistOpts;
+  });
+
+  // Pasien options
+  const pasienOpts = APP.data.Pasien.map(p => '<option value="' + p.ID_Pasien + '">' + p.Nama + ' (' + p.ID_Pasien + ')</option>').join('');
+  ['jadPasien', 'rmPasien'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.innerHTML = '<option value="">Pilih pasien...</option>' + pasienOpts;
+  });
+}
+
+// ============================================
+// GENERATE ID
+// ============================================
+
+function generateId(prefix, list, keyField) {
+  let max = 0;
+  list.forEach(item => {
+    const num = parseInt(String(item[keyField]).replace(/\D/g, '')) || 0;
+    if (num > max) max = num;
+  });
+  return prefix + String(max + 1).padStart(3, '0');
+}
+
+// ============================================
+// GET TODAY STRING
+// ============================================
+
+function getTodayStr() {
+  const d = new Date();
+  return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
+}
+
+// ============================================
+// STATUS BADGE HTML
+// ============================================
+
+function badgeHtml(status) {
+  const s = (status || '').toLowerCase();
+  let cls = 'badge-aktif';
+  if (s === 'menunggu') cls = 'badge-menunggu';
+  else if (s.includes('proses')) cls = 'badge-proses';
+  else if (s === 'selesai') cls = 'badge-selesai';
+  else if (s === 'batal') cls = 'badge-batal';
+  return '<span class="badge ' + cls + '">' + (status || 'Aktif') + '</span>';
+}
+
+function statusSelectHtml(currentStatus, jadwalId) {
+  const statuses = ['Menunggu', 'Dalam Proses', 'Selesai', 'Batal'];
+  const s = (currentStatus || '').toLowerCase();
+  let cls = 'badge-aktif';
+  if (s === 'menunggu') cls = 'badge-menunggu';
+  else if (s.includes('proses')) cls = 'badge-proses';
+  else if (s === 'selesai') cls = 'badge-selesai';
+  else if (s === 'batal') cls = 'badge-batal';
+
+  let html = '<select class="status-select ' + cls + '" onchange="updateJadwalStatus(this, \'' + jadwalId + '\')">';
+  statuses.forEach(st => {
+    html += '<option value="' + st + '"' + (st === currentStatus ? ' selected' : '') + '>' + st + '</option>';
+  });
+  html += '</select>';
+  return html;
+}
+
+// ============================================
+// DASHBOARD
+// ============================================
+
+function renderDashboard() {
+  const jadwal = APP.data.Jadwal || [];
+  const pasien = APP.data.Pasien || [];
+  const today = getTodayStr();
+
+  let todayJadwal = jadwal.filter(j => {
+    let tgl = String(j.Tanggal);
+    if (tgl.includes('T')) tgl = tgl.split('T')[0];
+    return tgl === today;
+  });
+
+  // Terapis personal view
+  if (APP.role === 'terapis') {
+    document.getElementById('dashGreeting').textContent = 'Selamat Datang, ' + APP.fullName + '!';
+    document.getElementById('dashSubtitle').textContent = 'Ringkasan sesi Anda hari ini';
+    document.getElementById('statSesiLabel').textContent = 'Sesi Saya Hari Ini';
+    document.getElementById('statWaitLabel').textContent = 'Menunggu (Saya)';
+
+    todayJadwal = todayJadwal.filter(j => j.Terapis === APP.fullName);
+    document.getElementById('statTotal').textContent = pasien.length;
+  } else {
+    document.getElementById('dashGreeting').textContent = 'Dashboard';
+    document.getElementById('dashSubtitle').textContent = 'Ringkasan aktivitas klinik hari ini';
+    document.getElementById('statSesiLabel').textContent = 'Sesi Hari Ini';
+    document.getElementById('statWaitLabel').textContent = 'Menunggu';
+    document.getElementById('statTotal').textContent = pasien.length;
+  }
+
+  document.getElementById('statSesi').textContent = todayJadwal.length;
+  document.getElementById('statWait').textContent = todayJadwal.filter(j => (j.Status || '').toLowerCase() === 'menunggu').length;
+  document.getElementById('statDone').textContent = todayJadwal.filter(j => (j.Status || '').toLowerCase() === 'selesai').length;
+
+  renderDashTable(todayJadwal);
+}
+
+function renderDashTable(data) {
+  const tbody = document.getElementById('dashTableBody');
+  if (!data || data.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="6"><div class="empty-state"><span class="material-icons-round">event_busy</span><h3>Tidak ada sesi</h3><p>Belum ada jadwal untuk hari ini</p></div></td></tr>';
+    return;
+  }
+  tbody.innerHTML = data.map(j => {
+    const initials = (j.Nama_Pasien || 'P').substring(0,2).toUpperCase();
+    return '<tr>' +
+      '<td><span class="row-avatar">' + initials + '</span><span class="cell-name">' + (j.Nama_Pasien || '-') + '</span></td>' +
+      '<td>' + (j.Jenis_Terapi || '-') + '</td>' +
+      '<td>' + (j.Terapis || '-') + '</td>' +
+      '<td>' + (j.Jam || '-') + '</td>' +
+      '<td>' + (j.Ruang || '-') + '</td>' +
+      '<td>' + statusSelectHtml(j.Status || 'Menunggu', j.ID_Jadwal) + '</td>' +
+      '</tr>';
+  }).join('');
+}
+
+function filterDashTable() {
+  const q = document.getElementById('dashSearch').value.toLowerCase();
+  const jadwal = APP.data.Jadwal || [];
+  const today = getTodayStr();
+  let filtered = jadwal.filter(j => {
+    let tgl = String(j.Tanggal);
+    if (tgl.includes('T')) tgl = tgl.split('T')[0];
+    return tgl === today;
+  });
+  if (APP.role === 'terapis') filtered = filtered.filter(j => j.Terapis === APP.fullName);
+  if (q) filtered = filtered.filter(j => (j.Nama_Pasien || '').toLowerCase().includes(q) || (j.Terapis || '').toLowerCase().includes(q));
+  renderDashTable(filtered);
+}
+
+// ============================================
+// PENDAFTARAN
+// ============================================
+
+function renderPendaftaran() {
+  const tbody = document.getElementById('regTableBody');
+  const data = APP.data.Pasien || [];
+  if (!data.length) {
+    tbody.innerHTML = '<tr><td colspan="7"><div class="empty-state"><span class="material-icons-round">person_off</span><h3>Belum ada data</h3><p>Tambahkan pendaftaran baru</p></div></td></tr>';
+    return;
+  }
+  tbody.innerHTML = data.map(p => {
+    const initials = (p.Nama || 'P').substring(0,2).toUpperCase();
+    return '<tr>' +
+      '<td><strong>' + p.ID_Pasien + '</strong></td>' +
+      '<td><span class="row-avatar">' + initials + '</span><span class="cell-name">' + p.Nama + '</span></td>' +
+      '<td>' + (p.Jenis_Kelamin || '-') + '</td>' +
+      '<td>' + (p.No_HP || '-') + '</td>' +
+      '<td>' + (p.Tgl_Daftar || '-') + '</td>' +
+      '<td>' + badgeHtml(p.Status) + '</td>' +
+      '<td><button class="btn btn-sm btn-ghost" onclick="deletePasien(\'' + p.ID_Pasien + '\')"><span class="material-icons-round" style="font-size:16px;color:var(--danger);">delete</span></button></td>' +
+      '</tr>';
+  }).join('');
+}
+
+async function submitPendaftaran() {
+  const nama = document.getElementById('regNama').value.trim();
+  if (!nama) { showToast('Nama wajib diisi!', 'error'); return; }
+
+  const id = generateId('PSN', APP.data.Pasien, 'ID_Pasien');
+  const data = {
+    ID_Pasien: id,
+    Nama: nama,
+    KTP_NIK: document.getElementById('regNIK').value.trim(),
+    Tgl_Lahir: document.getElementById('regTglLahir').value,
+    Jenis_Kelamin: document.getElementById('regGender').value,
+    No_HP: document.getElementById('regHP').value.trim(),
+    Email: document.getElementById('regEmail').value.trim(),
+    Keluhan: document.getElementById('regKeluhan').value.trim(),
+    Tgl_Daftar: getTodayStr(),
+    Status: 'Aktif'
+  };
+
+  try {
+    await apiGet('upsertData', { sheetName: 'Pasien', data: JSON.stringify(data) });
+    APP.data.Pasien.push(data);
+
+    // Also create jadwal if terapi + terapis selected
+    const terapi = document.getElementById('regTerapi').value;
+    const terapis = document.getElementById('regTerapist').value;
+    const tglKunjung = document.getElementById('regTglKunjung').value;
+    const jam = document.getElementById('regJam').value;
+
+    if (terapi && terapis && tglKunjung && jam) {
+      const jadwalId = generateId('JDW', APP.data.Jadwal, 'ID_Jadwal');
+      const jadwalData = {
+        ID_Jadwal: jadwalId, ID_Pasien: id, Nama_Pasien: nama,
+        Jenis_Terapi: terapi, Terapis: terapis, Tanggal: tglKunjung,
+        Jam: jam, Ruang: 'Ruang 1', Status: 'Menunggu'
+      };
+      await apiGet('upsertData', { sheetName: 'Jadwal', data: JSON.stringify(jadwalData) });
+      APP.data.Jadwal.push(jadwalData);
+    }
+
+    closeModal('modalPendaftaran');
+    clearForm('regNama', 'regNIK', 'regTglLahir', 'regHP', 'regEmail', 'regKeluhan', 'regTglKunjung', 'regJam');
+    renderPendaftaran();
+    showToast('Pendaftaran berhasil! ID: ' + id);
+  } catch (err) {
+    showToast('Gagal menyimpan data: ' + err.message, 'error');
+  }
+}
+
+async function deletePasien(id) {
+  if (!confirm('Hapus pasien ' + id + '?')) return;
+  try {
+    await apiGet('deleteData', { sheetName: 'Pasien', data: JSON.stringify({ ID_Pasien: id }) });
+    APP.data.Pasien = APP.data.Pasien.filter(p => p.ID_Pasien !== id);
+    renderPendaftaran();
+    showToast('Pasien ' + id + ' berhasil dihapus');
+  } catch (err) {
+    showToast('Gagal menghapus: ' + err.message, 'error');
+  }
+}
+
+// ============================================
+// DATA PASIEN
+// ============================================
+
+function renderDataPasien() {
+  const tbody = document.getElementById('patTableBody');
+  const data = APP.data.Pasien || [];
+  if (!data.length) {
+    tbody.innerHTML = '<tr><td colspan="7"><div class="empty-state"><span class="material-icons-round">people_outline</span><h3>Belum ada data</h3><p>Data pasien akan muncul setelah pendaftaran</p></div></td></tr>';
+    return;
+  }
+  tbody.innerHTML = data.map(p => {
+    const initials = (p.Nama || 'P').substring(0,2).toUpperCase();
+    return '<tr>' +
+      '<td><strong>' + p.ID_Pasien + '</strong></td>' +
+      '<td><span class="row-avatar">' + initials + '</span><span class="cell-name">' + p.Nama + '</span></td>' +
+      '<td>' + (p.Jenis_Kelamin || '-') + '</td>' +
+      '<td>' + (p.Tgl_Lahir || '-') + '</td>' +
+      '<td>' + (p.No_HP || '-') + '</td>' +
+      '<td>' + (p.Email || '-') + '</td>' +
+      '<td>' + badgeHtml(p.Status) + '</td>' +
+      '</tr>';
+  }).join('');
+}
+
+function exportCSV() {
+  const data = APP.data.Pasien || [];
+  if (!data.length) { showToast('Tidak ada data untuk diexport', 'error'); return; }
+  const headers = ['ID_Pasien','Nama','KTP_NIK','Tgl_Lahir','Jenis_Kelamin','No_HP','Email','Keluhan','Tgl_Daftar','Status'];
+  let csv = headers.join(',') + '\n';
+  data.forEach(p => {
+    csv += headers.map(h => '"' + (p[h] || '').replace(/"/g, '""') + '"').join(',') + '\n';
+  });
+  const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+  const link = document.createElement('a');
+  link.href = URL.createObjectURL(blob);
+  link.download = 'data_pasien_' + getTodayStr() + '.csv';
+  link.click();
+  showToast('Data berhasil diexport!');
+}
+
+// ============================================
+// JADWAL
+// ============================================
+
+function renderJadwal() {
+  const grid = document.getElementById('scheduleGrid');
+  const jadwal = APP.data.Jadwal || [];
+  const q = (document.getElementById('schSearch').value || '').toLowerCase();
+  const today = getTodayStr();
+
+  let filtered = jadwal.filter(j => {
+    let tgl = String(j.Tanggal);
+    if (tgl.includes('T')) tgl = tgl.split('T')[0];
+    return tgl === today;
+  });
+
+  if (q) filtered = filtered.filter(j => (j.Nama_Pasien || '').toLowerCase().includes(q) || (j.Terapis || '').toLowerCase().includes(q));
+
+  // Sort by time
+  filtered.sort((a, b) => (a.Jam || '').localeCompare(b.Jam || ''));
+
+  if (!filtered.length) {
+    grid.innerHTML = '<div class="empty-state"><span class="material-icons-round">event_busy</span><h3>Tidak ada jadwal</h3><p>Belum ada jadwal untuk hari ini</p></div>';
+    return;
+  }
+
+  grid.innerHTML = filtered.map(j => {
+    return '<div class="schedule-card">' +
+      '<div class="sch-time">' + (j.Jam || '-') + '</div>' +
+      '<div class="sch-patient">' + (j.Nama_Pasien || '-') + '</div>' +
+      '<div class="sch-detail">' + (j.Jenis_Terapi || '') + ' • ' + (j.Terapis || '') + ' • ' + (j.Ruang || '') + '</div>' +
+      '<div class="sch-badge">' + statusSelectHtml(j.Status || 'Menunggu', j.ID_Jadwal) + '</div>' +
+      '</div>';
+  }).join('');
+}
+
+async function submitJadwal() {
+  const pasienId = document.getElementById('jadPasien').value;
+  if (!pasienId) { showToast('Pilih pasien!', 'error'); return; }
+
+  const pasien = APP.data.Pasien.find(p => p.ID_Pasien === pasienId);
+  const id = generateId('JDW', APP.data.Jadwal, 'ID_Jadwal');
+  const data = {
+    ID_Jadwal: id,
+    ID_Pasien: pasienId,
+    Nama_Pasien: pasien ? pasien.Nama : '',
+    Jenis_Terapi: document.getElementById('jadTerapi').value,
+    Terapis: document.getElementById('jadTerapist').value,
+    Tanggal: document.getElementById('jadTanggal').value,
+    Jam: document.getElementById('jadJam').value,
+    Ruang: document.getElementById('jadRuang').value.trim(),
+    Status: 'Menunggu'
+  };
+
+  try {
+    await apiGet('upsertData', { sheetName: 'Jadwal', data: JSON.stringify(data) });
+    APP.data.Jadwal.push(data);
+    closeModal('modalJadwal');
+    clearForm('jadRuang');
+    renderJadwal();
+    showToast('Jadwal berhasil ditambahkan!');
+  } catch (err) {
+    showToast('Gagal menyimpan: ' + err.message, 'error');
+  }
+}
+
+async function updateJadwalStatus(selectEl, jadwalId) {
+  const newStatus = selectEl.value;
+  const jadwal = APP.data.Jadwal.find(j => j.ID_Jadwal === jadwalId);
+  if (!jadwal) return;
+
+  jadwal.Status = newStatus;
+
+  // Update CSS class
+  selectEl.className = 'status-select';
+  const s = newStatus.toLowerCase();
+  if (s === 'menunggu') selectEl.classList.add('badge-menunggu');
+  else if (s.includes('proses')) selectEl.classList.add('badge-proses');
+  else if (s === 'selesai') selectEl.classList.add('badge-selesai');
+  else if (s === 'batal') selectEl.classList.add('badge-batal');
+
+  try {
+    await apiGet('upsertData', { sheetName: 'Jadwal', data: JSON.stringify(jadwal) });
+    renderDashboard();
+    showToast('Status diupdate: ' + newStatus);
+  } catch (err) {
+    showToast('Gagal update status', 'error');
+  }
+}
+
+// ============================================
+// REKAM MEDIS
+// ============================================
+
+function renderRekamMedis() {
+  const tbody = document.getElementById('rmTableBody');
+  const data = APP.data.RekamMedis || [];
+  if (!data.length) {
+    tbody.innerHTML = '<tr><td colspan="7"><div class="empty-state"><span class="material-icons-round">description</span><h3>Belum ada data</h3><p>Rekam medis akan muncul setelah ditambahkan</p></div></td></tr>';
+    return;
+  }
+  tbody.innerHTML = data.map(r => {
+    const pasien = APP.data.Pasien.find(p => p.ID_Pasien === r.ID_Pasien);
+    const nama = pasien ? pasien.Nama : r.ID_Pasien;
+    return '<tr>' +
+      '<td><strong>' + r.ID_Rekam + '</strong></td>' +
+      '<td>' + nama + '</td>' +
+      '<td>' + (r.Diagnosa || '-') + '</td>' +
+      '<td>' + (r.Rekomendasi_Terapi || '-') + '</td>' +
+      '<td>' + (r.Pemeriksa || '-') + '</td>' +
+      '<td>' + (r.Tgl_Periksa || '-') + '</td>' +
+      '<td>' + badgeHtml(r.Status) + '</td>' +
+      '</tr>';
+  }).join('');
+}
+
+async function submitRekamMedis() {
+  const pasienId = document.getElementById('rmPasien').value;
+  if (!pasienId) { showToast('Pilih pasien!', 'error'); return; }
+
+  const id = generateId('RM', APP.data.RekamMedis, 'ID_Rekam');
+  const data = {
+    ID_Rekam: id,
+    ID_Pasien: pasienId,
+    Diagnosa: document.getElementById('rmDiagnosa').value.trim(),
+    Rekomendasi_Terapi: document.getElementById('rmRekomendasi').value.trim(),
+    Catatan: document.getElementById('rmCatatan').value.trim(),
+    Pemeriksa: document.getElementById('rmPemeriksa').value.trim(),
+    Tgl_Periksa: document.getElementById('rmTanggal').value || getTodayStr(),
+    Status: 'Aktif'
+  };
+
+  try {
+    await apiGet('upsertData', { sheetName: 'RekamMedis', data: JSON.stringify(data) });
+    APP.data.RekamMedis.push(data);
+    closeModal('modalRekamMedis');
+    clearForm('rmDiagnosa', 'rmRekomendasi', 'rmCatatan', 'rmPemeriksa', 'rmTanggal');
+    renderRekamMedis();
+    showToast('Rekam medis berhasil ditambahkan!');
+  } catch (err) {
+    showToast('Gagal menyimpan: ' + err.message, 'error');
+  }
+}
+
+// ============================================
+// TERAPIS
+// ============================================
+
+function renderTerapis() {
+  const grid = document.getElementById('terapisGrid');
+  const data = APP.data.Terapis || [];
+  if (!data.length) {
+    grid.innerHTML = '<div class="empty-state" style="grid-column:1/-1;"><span class="material-icons-round">badge</span><h3>Belum ada terapis</h3><p>Tambahkan data terapis baru</p></div>';
+    return;
+  }
+  grid.innerHTML = data.map(t => {
+    const initials = (t.Nama || 'T').substring(0,2).toUpperCase();
+    return '<div class="p-card">' +
+      '<div class="pc-top">' +
+        '<div class="pc-avatar">' + initials + '</div>' +
+        '<div><div class="pc-name">' + t.Nama + '</div><div class="pc-spec">' + (t.Spesialisasi || 'Fisioterapi') + '</div></div>' +
+      '</div>' +
+      '<div class="pc-desc">' + (t.Deskripsi || 'Tidak ada deskripsi') + '</div>' +
+      '<div class="pc-meta">' +
+        '<div class="pc-meta-item"><div class="pc-meta-val">' + (t.Total_Sesi || '0') + '</div><div class="pc-meta-lbl">Total Sesi</div></div>' +
+        '<div class="pc-meta-item"><div class="pc-meta-val">' + (t.Pasien_Hari_Ini || '0') + '</div><div class="pc-meta-lbl">Pasien Hari Ini</div></div>' +
+        '<div class="pc-meta-item"><div class="pc-meta-val">' + (t.Shift_Mulai || '08:00') + '</div><div class="pc-meta-lbl">Shift Mulai</div></div>' +
+      '</div>' +
+      '</div>';
+  }).join('');
+}
+
+async function submitTerapis() {
+  const nama = document.getElementById('tNama').value.trim();
+  if (!nama) { showToast('Nama wajib diisi!', 'error'); return; }
+
+  const id = generateId('TRP', APP.data.Terapis, 'ID_Terapis');
+  const data = {
+    ID_Terapis: id,
+    Nama: nama,
+    Spesialisasi: document.getElementById('tSpesialisasi').value.trim(),
+    Deskripsi: document.getElementById('tDeskripsi').value.trim(),
+    Shift_Mulai: document.getElementById('tShiftMulai').value,
+    Shift_Selesai: document.getElementById('tShiftSelesai').value,
+    Total_Sesi: '0',
+    Pasien_Hari_Ini: '0'
+  };
+
+  try {
+    await apiGet('upsertData', { sheetName: 'Terapis', data: JSON.stringify(data) });
+    APP.data.Terapis.push(data);
+    closeModal('modalTerapis');
+    clearForm('tNama', 'tSpesialisasi', 'tDeskripsi');
+    renderTerapis();
+    showToast('Terapis berhasil ditambahkan!');
+  } catch (err) {
+    showToast('Gagal menyimpan: ' + err.message, 'error');
+  }
+}
+
+// ============================================
+// JENIS TERAPI
+// ============================================
+
+function renderJenisTerapi() {
+  const grid = document.getElementById('terapiGrid');
+  const data = APP.data.JenisTerapi || [];
+  if (!data.length) {
+    grid.innerHTML = '<div class="empty-state" style="grid-column:1/-1;"><span class="material-icons-round">healing</span><h3>Belum ada jenis terapi</h3><p>Tambahkan jenis terapi baru</p></div>';
+    return;
+  }
+  grid.innerHTML = data.map(t => {
+    return '<div class="t-card">' +
+      '<div class="tc-code">' + t.Kode_Terapi + '</div>' +
+      '<div class="tc-name">' + t.Nama_Terapi + '</div>' +
+      '<div class="tc-desc">' + (t.Deskripsi || 'Tidak ada deskripsi') + '</div>' +
+      '<div class="tc-bottom">' +
+        '<div class="tc-dur"><span class="material-icons-round">schedule</span> ' + (t.Durasi_Menit || '30') + ' menit</div>' +
+      '</div>' +
+      '</div>';
+  }).join('');
+}
+
+async function submitJenisTerapi() {
+  const nama = document.getElementById('jtNama').value.trim();
+  if (!nama) { showToast('Nama terapi wajib diisi!', 'error'); return; }
+
+  const id = generateId('TRY', APP.data.JenisTerapi, 'Kode_Terapi');
+  const data = {
+    Kode_Terapi: id,
+    Nama_Terapi: nama,
+    Deskripsi: document.getElementById('jtDeskripsi').value.trim(),
+    Durasi_Menit: document.getElementById('jtDurasi').value || '30'
+  };
+
+  try {
+    await apiGet('upsertData', { sheetName: 'JenisTerapi', data: JSON.stringify(data) });
+    APP.data.JenisTerapi.push(data);
+    closeModal('modalJenisTerapi');
+    clearForm('jtNama', 'jtDeskripsi', 'jtDurasi');
+    renderJenisTerapi();
+    showToast('Jenis terapi berhasil ditambahkan!');
+  } catch (err) {
+    showToast('Gagal menyimpan: ' + err.message, 'error');
+  }
+}
+
+// ============================================
+// LAPORAN
+// ============================================
+
+function renderLaporan() {
+  const pasien = APP.data.Pasien || [];
+  const jadwal = APP.data.Jadwal || [];
+  const terapis = APP.data.Terapis || [];
+  const jenisTerapi = APP.data.JenisTerapi || [];
+
+  const totalSesi = jadwal.length;
+  const selesai = jadwal.filter(j => (j.Status || '').toLowerCase() === 'selesai').length;
+  const attendance = totalSesi > 0 ? Math.round((selesai / totalSesi) * 100) : 0;
+
+  // Terapi favorit
+  const terapiCount = {};
+  jadwal.forEach(j => {
+    const t = j.Jenis_Terapi || 'Lainnya';
+    terapiCount[t] = (terapiCount[t] || 0) + 1;
+  });
+  const terapiFav = Object.keys(terapiCount).sort((a,b) => terapiCount[b] - terapiCount[a]);
+  const topTerapi = terapiFav[0] || '-';
+
+  // Report stat cards
+  document.getElementById('reportStats').innerHTML =
+    '<div class="report-stat"><div class="rs-icon" style="background:var(--primary-light);color:var(--primary);"><span class="material-icons-round">people</span></div><div class="rs-val">' + pasien.length + '</div><div class="rs-lbl">Total Pasien</div></div>' +
+    '<div class="report-stat"><div class="rs-icon" style="background:var(--success-light);color:var(--success);"><span class="material-icons-round">check_circle</span></div><div class="rs-val">' + selesai + '</div><div class="rs-lbl">Sesi Selesai</div></div>' +
+    '<div class="report-stat"><div class="rs-icon" style="background:var(--info-light);color:var(--info);"><span class="material-icons-round">trending_up</span></div><div class="rs-val">' + attendance + '%</div><div class="rs-lbl">Attendance Rate</div></div>' +
+    '<div class="report-stat"><div class="rs-icon" style="background:var(--accent-light);color:var(--accent);"><span class="material-icons-round">star</span></div><div class="rs-val" style="font-size:16px;">' + topTerapi + '</div><div class="rs-lbl">Terapi Favorit</div></div>';
+
+  // Donut chart
+  const colors = ['#6366f1', '#f97316', '#22c55e', '#3b82f6', '#f59e0b', '#ef4444', '#8b5cf6', '#14b8a6'];
+  const total = jadwal.length || 1;
+  let donutBg = '';
+  let angle = 0;
+  const segments = [];
+
+  terapiFav.forEach((t, i) => {
+    const pct = (terapiCount[t] / total) * 100;
+    const endAngle = angle + (pct / 100) * 360;
+    segments.push({ name: t, count: terapiCount[t], pct: Math.round(pct), color: colors[i % colors.length], start: angle, end: endAngle });
+    angle = endAngle;
+  });
+
+  if (segments.length > 0) {
+    const conicParts = segments.map(s => s.color + ' ' + s.start + 'deg ' + s.end + 'deg').join(', ');
+    donutBg = 'conic-gradient(' + conicParts + ')';
+  } else {
+    donutBg = 'var(--border)';
+  }
+
+  const legendHtml = segments.map(s =>
+    '<div class="legend-item"><div class="leg-dot" style="background:' + s.color + ';"></div>' + s.name + '<span class="leg-count">' + s.count + ' (' + s.pct + '%)</span></div>'
+  ).join('');
+
+  document.getElementById('donutChart').innerHTML =
+    '<div class="donut-chart" style="background:' + donutBg + ';"><div class="donut-center"><div class="dc-val">' + total + '</div><div class="dc-lbl">Total Sesi</div></div></div>' +
+    '<div class="donut-legend">' + legendHtml + '</div>';
+
+  // Terapis progress
+  const terapisCount = {};
+  jadwal.forEach(j => {
+    const t = j.Terapis || 'Unknown';
+    terapisCount[t] = (terapisCount[t] || 0) + 1;
+  });
+  const maxSesi = Math.max(...Object.values(terapisCount), 1);
+
+  document.getElementById('terapisProgress').innerHTML = Object.keys(terapisCount)
+    .sort((a,b) => terapisCount[b] - terapisCount[a])
+    .map(t => {
+      const count = terapisCount[t];
+      const pct = Math.round((count / maxSesi) * 100);
+      return '<div class="progress-item">' +
+        '<div class="pi-top"><span class="pi-label">' + t + '</span><span class="pi-value">' + count + ' sesi</span></div>' +
+        '<div class="pi-bar"><div class="pi-fill" style="width:' + pct + '%;"></div></div>' +
+        '</div>';
+    }).join('');
+
+  // Responsive chart layout
+  const chartContainer = document.getElementById('reportCharts');
+  if (window.innerWidth <= 768) {
+    chartContainer.style.gridTemplateColumns = '1fr';
+  }
+}
+
+// ============================================
+// CEK PASIEN
+// ============================================
+
+async function checkPatient() {
+  const id = document.getElementById('checkPatientId').value.trim();
+  if (!id) { showToast('Masukkan ID Pasien atau Rekam Medis!', 'error'); return; }
+
+  const resultDiv = document.getElementById('checkResult');
+  resultDiv.style.display = 'none';
+
+  try {
+    const result = await apiGet('getPatientStatus', { idPasien: id });
+
+    if (!result.found) {
+      resultDiv.style.display = 'block';
+      resultDiv.innerHTML = '<div style="text-align:center; padding:20px; color:var(--danger);"><span class="material-icons-round" style="font-size:48px;">person_off</span><h3 style="margin-top:8px;">Pasien Tidak Ditemukan</h3><p style="font-size:13px; color:var(--text-secondary);">ID "' + id + '" tidak ditemukan dalam sistem</p></div>';
+      return;
+    }
+
+    let html = '<div class="cr-info"><h3>📋 Informasi Pasien</h3>';
+    const p = result.pasien;
+    const fields = [
+      ['ID Pasien', p.ID_Pasien], ['Nama', p.Nama], ['Tanggal Lahir', p.Tgl_Lahir],
+      ['Jenis Kelamin', p.Jenis_Kelamin], ['No HP', p.No_HP], ['Email', p.Email], ['Status', p.Status]
+    ];
+    fields.forEach(f => {
+      html += '<div class="cr-detail-row"><span class="cdr-label">' + f[0] + '</span><span class="cdr-value">' + (f[1] || '-') + '</span></div>';
+    });
+    html += '</div>';
+
+    // Jadwal summary
+    if (result.jadwal && result.jadwal.length > 0) {
+      html += '<div class="card" style="margin-bottom:12px;"><div class="card-head"><h2><span class="material-icons-round">calendar_month</span> Riwayat Jadwal (' + result.jadwal.length + ')</h2></div>';
+      html += '<div class="card-body np"><div class="table-wrap"><table><thead><tr><th>Tanggal</th><th>Jam</th><th>Terapi</th><th>Status</th></tr></thead><tbody>';
+      result.jadwal.forEach(j => {
+        html += '<tr><td>' + (j.Tanggal || '-') + '</td><td>' + (j.Jam || '-') + '</td><td>' + (j.Jenis_Terapi || '-') + '</td><td>' + badgeHtml(j.Status) + '</td></tr>';
+      });
+      html += '</tbody></table></div></div></div>';
+    }
+
+    // Rekam medis summary
+    if (result.rekamMedis && result.rekamMedis.length > 0) {
+      html += '<div class="card"><div class="card-head"><h2><span class="material-icons-round">medical_information</span> Rekam Medis (' + result.rekamMedis.length + ')</h2></div>';
+      html += '<div class="card-body np"><div class="table-wrap"><table><thead><tr><th>Tanggal</th><th>Diagnosa</th><th>Rekomendasi</th><th>Status</th></tr></thead><tbody>';
+      result.rekamMedis.forEach(r => {
+        html += '<tr><td>' + (r.Tgl_Periksa || '-') + '</td><td>' + (r.Diagnosa || '-') + '</td><td>' + (r.Rekomendasi_Terapi || '-') + '</td><td>' + badgeHtml(r.Status) + '</td></tr>';
+      });
+      html += '</tbody></table></div></div></div>';
+    }
+
+    resultDiv.style.display = 'block';
+    resultDiv.innerHTML = html;
+
+  } catch (err) {
+    showToast('Gagal mengecek: ' + err.message, 'error');
+  }
+}
+
+function openPublicCheckModal() {
+  document.getElementById('publicCheckPatientId').value = '';
+  const resultDiv = document.getElementById('publicCheckResult');
+  resultDiv.style.display = 'none';
+  resultDiv.innerHTML = '';
+  openModal('modalPublicCekPasien');
+}
+
+async function checkPatientPublic() {
+  const id = document.getElementById('publicCheckPatientId').value.trim();
+  if (!id) { showToast('Masukkan ID Pasien atau Rekam Medis!', 'error'); return; }
+
+  const resultDiv = document.getElementById('publicCheckResult');
+  resultDiv.style.display = 'none';
+  resultDiv.innerHTML = '<div style="text-align:center; padding:20px;"><div class="spinner" style="margin:0 auto 12px auto; border-color:var(--primary) transparent transparent transparent;"></div> Memproses...</div>';
+  resultDiv.style.display = 'block';
+
+  try {
+    const result = await apiGet('getPatientStatus', { idPasien: id });
+
+    if (!result.found) {
+      resultDiv.innerHTML = '<div style="text-align:center; padding:20px; color:var(--danger);"><span class="material-icons-round" style="font-size:48px;">person_off</span><h3 style="margin-top:8px;">Pasien Tidak Ditemukan</h3><p style="font-size:13px; color:var(--text-secondary);">ID "' + id + '" tidak ditemukan</p></div>';
+      return;
+    }
+
+    let html = '<div class="cr-info"><h3>📋 Informasi Pasien</h3>';
+    const p = result.pasien;
+    const fields = [
+      ['ID Pasien', p.ID_Pasien], ['Nama', p.Nama], ['Tanggal Lahir', p.Tgl_Lahir],
+      ['Jenis Kelamin', p.Jenis_Kelamin], ['Status Pasien', p.Status]
+    ];
+    fields.forEach(f => {
+      html += '<div class="cr-detail-row"><span class="cdr-label">' + f[0] + '</span><span class="cdr-value">' + (f[1] || '-') + '</span></div>';
+    });
+    html += '</div>';
+
+    // Jadwal summary
+    if (result.jadwal && result.jadwal.length > 0) {
+      html += '<div class="card" style="margin-bottom:12px; box-shadow:none; border:1px solid var(--border);"><div class="card-head"><h2><span class="material-icons-round">calendar_month</span> Riwayat Jadwal (' + result.jadwal.length + ')</h2></div>';
+      html += '<div class="card-body np"><div class="table-wrap"><table><thead><tr><th>Tanggal</th><th>Jam</th><th>Terapi</th><th>Status</th></tr></thead><tbody>';
+      result.jadwal.forEach(j => {
+        html += '<tr><td>' + (j.Tanggal || '-') + '</td><td>' + (j.Jam || '-') + '</td><td>' + (j.Jenis_Terapi || '-') + '</td><td>' + badgeHtml(j.Status) + '</td></tr>';
+      });
+      html += '</tbody></table></div></div></div>';
+    }
+
+    // Rekam medis summary
+    if (result.rekamMedis && result.rekamMedis.length > 0) {
+      html += '<div class="card" style="box-shadow:none; border:1px solid var(--border);"><div class="card-head"><h2><span class="material-icons-round">medical_information</span> Rekam Medis (' + result.rekamMedis.length + ')</h2></div>';
+      html += '<div class="card-body np"><div class="table-wrap"><table><thead><tr><th>Tanggal</th><th>Diagnosa</th><th>Rekomendasi</th><th>Status</th></tr></thead><tbody>';
+      result.rekamMedis.forEach(r => {
+        html += '<tr><td>' + (r.Tgl_Periksa || '-') + '</td><td>' + (r.Diagnosa || '-') + '</td><td>' + (r.Rekomendasi_Terapi || '-') + '</td><td>' + badgeHtml(r.Status) + '</td></tr>';
+      });
+      html += '</tbody></table></div></div></div>';
+    }
+
+    resultDiv.innerHTML = html;
+  } catch (err) {
+    resultDiv.innerHTML = '<div style="text-align:center; padding:20px; color:var(--danger);"><span class="material-icons-round" style="font-size:48px;">error</span><h3 style="margin-top:8px;">Gagal Mengecek Status</h3><p style="font-size:13px; color:var(--text-secondary);">' + err.message + '</p></div>';
+  }
+}
+
+// ============================================
+// UTILITY FUNCTIONS
+// ============================================
+
+function clearForm(...ids) {
+  ids.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.value = '';
+  });
+}
+
+function filterTable(searchId, tbodyId) {
+  const q = document.getElementById(searchId).value.toLowerCase();
+  const rows = document.getElementById(tbodyId).querySelectorAll('tr');
+  rows.forEach(row => {
+    const text = row.textContent.toLowerCase();
+    row.style.display = text.includes(q) || !q ? '' : 'none';
+  });
+}
+
+// Window resize handler for report charts
+window.addEventListener('resize', function() {
+  if (APP.currentPage === 'laporan') {
+    const chartContainer = document.getElementById('reportCharts');
+    if (chartContainer) {
+      chartContainer.style.gridTemplateColumns = window.innerWidth <= 768 ? '1fr' : '1fr 1fr';
+    }
+  }
+});
+
+</script>
+</body>
+</html>
